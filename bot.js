@@ -116,49 +116,25 @@ client.on('error', e => {
 
 client.login(ayarlar.token);
 
-//-----------------------HOŞ-GELDİN-MESAJI----------------------\\     STG
+// Hoş Geldin Mesajı
 
-client.on("guildMemberAdd", member => {
-    require("moment-duration-format")
-      var üyesayısı = member.guild.members.cache.size.toString().replace(/ /g, "    ")
-      var üs = üyesayısı.match(/([0-9])/g)
-      üyesayısı = üyesayısı.replace(/([a-zA-Z])/g, "bilinmiyor").toLowerCase()
-      if(üs) {
-        üyesayısı = üyesayısı.replace(/([0-9])/g, d => {
-          return {
-            '0': `SIFIR EMOJİ`,
-            '1': `BİR EMOJİ`,
-            '2': `İKİ EMOJİ`,
-            '3': `ÜÇ EMOJİ`,
-            '4': `DÖRT EMOJİ`,
-            '5': `BEŞ EMOJİ`,
-            '6': `ALTI EMOJİ`,
-            '7': `YEDİ EMOJİ`,
-            '8': `SEKİZ EMOJİ`,
-            '9': `DOKUZ EMOJİ`}[d];
-          })
-        }
-    const kanal = member.guild.channels.cache.find(r => r.id === "REGISTER KANAL IDSİ");
+client.on("guildMemberAdd", member => {  
+  const register = "<@&757931254313254968>"  
+  const kanal = member.guild.channels.cache.find(r => r.id === "757939910287294474");
+    
     let user = client.users.cache.get(member.id);
     require("moment-duration-format");
       const kurulus = new Date().getTime() - user.createdAt.getTime();  
+  const gecen = moment.duration(kurulus).format(`[Yıl,] Önce Oluşturulmuş`) 
    
     var kontrol;
-  if (kurulus < 1296000000) kontrol = 'Hesap Durumu: Güvenilir Değil.'
-  if (kurulus > 1296000000) kontrol = 'Hesap Durumu: Güvenilir Gözüküyor.'
+  if (kurulus < 1296000000) kontrol = ''
+  if (kurulus > 1296000000) kontrol = '<:stg_yes:784096556945113138>'
     moment.locale("tr");
-    const embed = new Discord.MessageEmbed()
-    .setAuthor(member.guild.name, member.guild.iconURL({ dynamic: true }))
-    .setThumbnail(member.user.avatarURL({ dynamic: true }))
-    .setColor('0xEFF3E6')
-    .setDescription("\n**<@"+member.user.id+">  Aramıza Katıldı. \n\nOdalardan Birisinde Teyit Vererek Kayıt Olabilirsin. \n\n<@&REGISTER ROL ID> Rolündekiler Seninle İlgilenecektir. \n\nSeninle Birlikte "+üyesayısı+" Kişiyiz. \n\nHesabın: `" + moment(member.user.createdAt).format("\`YYYY DD MMMM dddd\`") +  "` Tarihinde Oluşturulmuş. \n\n"+kontrol+" \n\nTagımızı Alarak ` STRIGA CODE ` Bize Destek Olabilirsin.**")
-    .setFooter(`Striga #Code`)
-    kanal.send(`<@&REGISTER ROL ID>`)
-    kanal.send(embed)
-});
+  kanal.send(":tada: Sunucumuza Hoş Geldin ! <@" + member + "> \n Hesabın "+ gecen +" \n ")
+  });
   
-
-//-----------------------HOŞ-GELDİN-MESAJI----------------------\\     STG
+  // Hoş Geldin Mesajı
 
 
 
