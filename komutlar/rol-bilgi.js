@@ -3,10 +3,10 @@ const ayarlar = require('../ayarlar.json')
 
 exports.run = async (client, msg, args) => {
       let prefix = ayarlar.prefix
-
+      let yazı = "Rol Sahibi Kullanıcılar"
 
     let role = msg.mentions.roles.first() || msg.guild.roles.cache.get(args[0]) || msg.guild.roles.cache.find(role => role.name === args.join(' '));
-  
+  let top = msg.guild.members.cache.filter(uye => msg.guild.roles.cache.get(`yetkili.${uye.id}.toplam`))
   var hata = new Stg.MessageEmbed()
   .setColor("#36393F")
   .setDescription(`Lütfen Bir Rol Etiketleyin Örnek: \`${prefix}rolbilgi @Üye\``);
@@ -14,16 +14,8 @@ exports.run = async (client, msg, args) => {
 
         let hex = role.hexColor.toString().slice(1)
         let embed = new Stg.MessageEmbed()
-            .setThumbnail(`http://colorhexa.com/${hex}.png`)
-            .addField("Rol İsmi", role.name, false)
-            .addField(`Rol ID`, role.id, false)
-            .addField(`Rol Tag`, role, false)
-            .addField(`Etiketlenebilir mi?`, role.mentionable ? '\n Evet' : 'Hayır', false)
-            .setColor(role.hexColor)
-            .addField("Renk", role.hexColor, false)
-            .addField("Kaç Kullanıcıda Bulunuyor", role.members.size, false)
-       .setFooter('Bu komutu kullanan kullanıcı ' + msg.author.tag, msg.author.avatarURL({ format: 'png', dynamic: true, size: 1024 }))
-            .setTimestamp(role.createdAt)
+        .setAuthor(yazı, msg.author.avatarURL({ dynamic: true }))
+        .setDescription(`${top}`)
         msg.channel.send(embed)
     }
 
