@@ -8,7 +8,8 @@ if(!["783848574601134080", "783839815337508914"].some(role => message.member.rol
 const erkek = message.guild.roles.cache.find(r => r.id === "783844486659702844")
 const xy = message.guild.roles.cache.find(r => r.id === "783844486992232449")
 const kayıtsız = message.guild.roles.cache.find(r => r.id === "783846167691395082")
-const reglog = message.guild.channel.cache.find(c => c.id === "784093776523690014")
+const reglog = message.guild.channels.cache.find(c => c.id === "784093776523690014")
+const onay = client.emojis.cache.get("784096556945113138")
   
   
 const member = message.guild.member(message.mentions.members.first() || message.guild.members.cache.get(args[0]));
@@ -16,7 +17,7 @@ if(!member) return message.channel.send(new Discord.MessageEmbed().setColor('RED
 if(!member.roles.highest.position >= message.member.roles.highest.position) return message.channel.send(new Discord.MessageEmbed().setColor('RED').setDescription(`Bu Kullanıcı Sizle Üst/Aynı Pozisyondadır.`))
 const x = message.guild.member(member)
 
-let tag = 'TAG'
+let tag = '⍭'
 let isim = args[1]
 let yas = Number(args[2])
 if(!isim) return message.channel.send(new Discord.MessageEmbed().setColor('GOLD').setDescription(`Bir İsim Belirt`))
@@ -27,16 +28,20 @@ db.add(`yetkili.${message.author.id}.erkek`,1 )
 db.add(`yetkili.${message.author.id}.toplam`, 1)  
 let toplami = db.fetch(`yetkili.${message.author.id}.toplam`)  
 
-message.react('✅')
+message.react(onay)
+x.setNickname(`${tag} ${isim} | ${yas}`)
+x.roles.add(erkek)
+x.roles.add(xy)
+x.roles.remove(kayıtsız)
   
 const stg = new Discord.MessageEmbed()
-.setAuthor(client.user.username, client.user.avatarURL({ dynamic: true }))
-.addField(`\`Yetkili\``, `${message.author}`, true)  
-.addField(`\`Kullanıcı\``, `${member}`, true)  
-.addField(`\`Roller\``, `${erkek}, ${xy}`, true)  
-.addField(`\`İsim\``, ``, true)  
-.addField(`\`Kayıt Sorgu\``, ``, true)  
-.addField(`\`Kanal\``, ``, true)  
+.setThumbnail(member.user.avatarURL({ dynamic: true }))
+.setAuthor(member.user.username)
+.addField(`Yetkili`, `${message.author}`, true)  
+.addField(`Kullanıcı`, `${member}`, true)  
+.addField(`Roller`, `${erkek}, ${xy}`, true)  
+.addField(`İsim`, `${tag} ${isim} | ${yas}`, true)   
+.addField(`Kanal`, `${message.channel}`, true)  
 reglog.send(stg)
 
 
