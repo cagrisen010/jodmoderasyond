@@ -13,6 +13,7 @@ const kadin = message.guild.roles.cache.find(r => r.id === "783844484449435698")
 const xx = message.guild.roles.cache.find(r => r.id === "783844485674041366")
 const kayıtsız = message.guild.roles.cache.find(r => r.id === "783846167691395082")
 const reglog = message.guild.channels.cache.find(c => c.id === "784093776523690014")
+const genelchat = message.guild.channels.cache.find(g => g.id === "783953976748015616")
 const onay = client.emojis.cache.get("784096556945113138")
   
     const rol = "783844484449435698";
@@ -61,7 +62,7 @@ reglog.send(stg)
         age: yas
        })
 
-kayıt.chat.send(`<${member.id}>, Aramıza Hoş Geldin ! Umarım Keyifli Vakitler Geçirirsin.`)
+genelchat.send(`<@${member.id}>, Aramıza Hoş Geldin ! Umarım Keyifli Vakitler Geçirirsin.`)
   
 }
 

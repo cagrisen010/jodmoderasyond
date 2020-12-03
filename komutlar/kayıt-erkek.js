@@ -3,7 +3,6 @@ const db = require('quick.db')
 const kayıt = {
     tag: '𐊚',
     tag2: '✦',
-    chat: '783953976748015616'
 };
 exports.run = async (client, message, args) => {
   
@@ -13,6 +12,7 @@ const erkek = message.guild.roles.cache.find(r => r.id === "783844486659702844")
 const xy = message.guild.roles.cache.find(r => r.id === "783844486992232449")
 const kayıtsız = message.guild.roles.cache.find(r => r.id === "783846167691395082")
 const reglog = message.guild.channels.cache.find(c => c.id === "784093776523690014")
+const genelchat = message.guild.channels.cache.find(g => g.id === "783953976748015616")
 const onay = client.emojis.cache.get("784096556945113138")
   
     const rol = "783844486659702844";
@@ -53,7 +53,7 @@ const stg = new Discord.MessageEmbed()
 .addField(`Kanal`, `${message.channel}`, true)  
 reglog.send(stg)
 
-kayıt.chat.send(`<${member.id}>, Aramıza Hoş Geldin ! Umarım Keyifli Vakitler Geçirirsin.`)
+genelchat.send(`<@${member.id}>, Aramıza Hoş Geldin ! Umarım Keyifli Vakitler Geçirirsin.`)
 
     db.push(`isim.${message.guild.id}`, {
         userID: member.id,
