@@ -30,6 +30,7 @@ module.exports.run = async (client, message, args) => {
     • Toplam Erkek Kayıtların: \`${erkek}\`
     • Toplam Kadın Kayıtların: \`${kadın}\`
     `)
+    .setColor("0x2f3136")
     return message.channel.send(kayıtlar2)
 
 
@@ -56,6 +57,7 @@ const kayıtlar3 = new Discord.MessageEmbed()
 • Toplam Erkek Kayıtların: \`${erkek1}\`
 • Toplam Kadın Kayıtların: \`${kadin1}\`
 `)
+.setColor("0x2f3136")
 return message.channel.send(kayıtlar3)
 }
 
