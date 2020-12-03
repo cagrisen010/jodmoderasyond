@@ -1,6 +1,10 @@
 const Discord = require('discord.js')
 const db = require('quick.db')
-
+const kayıt = {
+    tag: '★',
+    tag2: '✦',
+    chat: '783953976748015616'
+};
 exports.run = async (client, message, args) => {
   
 if(!["783848574601134080", "783839815337508914"].some(role => message.member.roles.cache.get(role)) && (!message.member.hasPermission("ADMINISTRATOR"))) return message.channel.send(`Bu Komutu Kullanabilmek İçin Yetkin Bulunmuyor.`)
@@ -14,26 +18,27 @@ const onay = client.emojis.cache.get("784096556945113138")
     const rol = "783844484449435698";
   
     db.set(`rol.${message.guild.id}`, rol)
-    let rol2 = db.fetch(`rol.${message.guild.id}`)
+    let rol1 = db.fetch(`rol.${message.guild.id}`)
   
 const member = message.guild.member(message.mentions.members.first() || message.guild.members.cache.get(args[0]));
 if(!member) return message.channel.send(`Bir Kullanıcı Belirt.`)
 if(!member.roles.highest.position >= message.member.roles.highest.position) return message.channel.send(`Bu Kullanıcı Sizle Üst/Aynı Pozisyondadır.`)
 const x = message.guild.member(member)
 
-let tag = '⍭'
 let isim = args[1]
 let yas = Number(args[2])
 if(!isim) return message.channel.send(`Bir İsim Belirt`)
 if(!yas) return message.channel.send(`Bir Yaş Belirt`)
 
+const Tagisim = `${member.user.username.includes(kayıt.tag) ? kayıt.tag : kayıt.tag2} ${isim} | ${yas}`;
+  
 let bilgi = db.get(`yetkili.${member.id}`);  
 db.add(`yetkili.${message.author.id}.kadin`,1 )
 db.add(`yetkili.${message.author.id}.toplam`, 1)  
 let toplami = db.fetch(`yetkili.${message.author.id}.toplam`)  
 
 message.react(onay)
-x.setNickname(`${tag} ${isim} | ${yas}`)
+x.setNickname(`${Tagisim}`)
 x.roles.add(kadin)
 x.roles.add(xx)
 x.roles.remove(kayıtsız)
@@ -44,7 +49,7 @@ const stg = new Discord.MessageEmbed()
 .addField(`Yetkili`, `${message.author}`, true)  
 .addField(`Kullanıcı`, `${member}`, true)  
 .addField(`Roller`, `${kadin}, ${xx}`, true)  
-.addField(`İsim`, `${tag} ${isim} | ${yas}`, true)   
+.addField(`İsim`, `${Tagisim}`, true)   
 .addField(`Kanal`, `${message.channel}`, true)  
 reglog.send(stg)
 
@@ -56,7 +61,8 @@ reglog.send(stg)
         age: yas
        })
 
-
+kayıt.chat.send(`<${member.id}>, Aramıza Hoş Geldin ! Umarım Keyifli Vakitler Geçirirsin.`)
+  
 }
 
 exports.conf = {
