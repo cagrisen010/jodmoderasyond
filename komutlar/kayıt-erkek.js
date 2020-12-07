@@ -42,6 +42,13 @@ x.setNickname(`${Tagisim}`)
 x.roles.add(erkek)
 x.roles.add(xy)
 x.roles.remove(kayıtsız)
+//
+x.setNickname(`${Tagisim}`)
+x.roles.add(erkek)
+x.roles.add(xy)
+x.roles.remove(kayıtsız)
+    
+
   
 const stg = new Discord.MessageEmbed()
 .setThumbnail(member.user.avatarURL({ dynamic: true }))
