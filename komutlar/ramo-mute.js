@@ -9,7 +9,6 @@ return message.channel.send(new MessageEmbed().setDescription(`${message.author}
  let member = message.guild.member(message.mentions.users.first() || message.guild.members.cache.get(args[0]));
 if (!member) return message.channel.send(new MessageEmbed().setColor('0x800d0d').setDescription(`${message.author}, lütfen bir kullanıcı etiketle !`))
   
-let tarih = new Date().toLocaleString("tr-TR", { timeZone: "Asia/Istanbul"});
 let mute = message.mentions.members.first() || message.guild.members.cache.find(r => r.id === args[0]);
 if (!mute) { new MessageEmbed().setColor('0x800d0d').setDescription(`${message.author}, lütfen mute atmam gereken kullanıcı belirt !`);
 } else {
