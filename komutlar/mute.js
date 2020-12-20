@@ -62,7 +62,7 @@ Zaman: \`${zamandilimi}\`
 
 Sebep: (\`${sebep}\`)
 
-Tarih: (\`${moment(Date.now()).format("DD")} ${aylar[moment(Date.now()).format("MM")]} ${moment(Date.now()).add(10,"hours").format("YYYY HH:mm:ss")}\`
+Tarih: (\`${moment(Date.now()).format("DD")} ${aylar[moment(Date.now()).format("MM")]} ${moment(Date.now()).add(10,"hours").format("YYYY HH:mm:ss")}\`)
 
 `))
 mute.roles.add('763481961565782050')
@@ -81,8 +81,7 @@ Zaman: \`${zamandilimi}\`
 
 Sebep: (\`${sebep}\`)
        
-Tarih: (\`${tarih}\`)`)
-
+Tarih: (\`${moment(Date.now()).format("DD")} ${aylar[moment(Date.now()).format("MM")]} ${moment(Date.now()).add(10,"hours").format("YYYY HH:mm:ss")}\`)`)
 );
 }, ms(zaman));
 
