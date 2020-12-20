@@ -6,7 +6,7 @@ module.exports.run = (client, message, args) => {
 
 
   let tag = "TAG";
-  const booster = message.guild.roles.cache.get("763481961518858267").members.size
+  const booster = message.guild.roles.cache.get("BOOSTER ROL ID").members.size
   const online = message.guild.members.cache.filter(u => u.presence.status != "offline").size
   const ttag = message.guild.members.cache.filter(m => m.user.username.includes(tag)).size
   const toplam = message.guild.memberCount
@@ -14,14 +14,13 @@ module.exports.run = (client, message, args) => {
 
   const embed = new MessageEmbed()
   .setTimestamp()
-  .setColor('PURPLE')
+  .setColor('RANDOM')
   .setAuthor(message.guild.name, message.guild.iconURL({ dynamic: true }))
-  message.channel.send(embed.setDescription(`Sunucuda Toplam \`${toplam}\` Üye Bulunmakta.
-  Sunucuda Toplam \`${online}\` Çevirimiçi Üye Bulunmakta.
-  \`${ses}\` Üye Ses Odalarında.
-  Sunucuda Toplam \`${ttag}\` Taglı Üye Bulunmakta.
-  Sunucuda Toplam \`${booster}\` Booter Bulunmakta.
-`));
+  message.channel.send(embed.setDescription(`**Toplam Üye  ・ ${toplam}
+  Aktif Üye ・ ${online}
+  Taglı Üye ・ ${ttag}
+  Booster Üye ・${booster}
+  Sesteki Üye ・${ses}**`));
 };
 
   exports.conf = {
