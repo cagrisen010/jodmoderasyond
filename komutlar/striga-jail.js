@@ -12,24 +12,7 @@ if(!["", ""].some(role => message.member.roles.cache.get(role)) && (!message.mem
 return message.channel.send(new MessageEmbed().setDescription(`${message.author} Komutu kullanmak için yetkin bulunmamakta.`).setColor('0x800d0d').setAuthor(message.member.displayName, message.author.avatarURL({ dynamic: true })).setTimestamp()).then(x => x.delete({timeout: 5000}));
   
 const cezalırol = message.guild.roles.cache.find(r => r.id === '763481961565782049')
-  
-let tumaylar = {
-"01": "Ocak",  
-"02": "Şubat", 
-"03": "Mart",  
-"04": "Nisan",  
-"05": "Mayıs", 
-"06": "Haziran", 
-"07": "Temmuz",
-"08": "Ağustos", 
-"09": "Eylül", 
-"10": "Ekim", 
-"11": "Kasım", 
-"12": "Aralık", 
-}
-let aylar = tumaylar;  
-  
-  
+    
 let kullanici = message.guild.member(message.mentions.members.first() || message.guild.members.cache.get(args[0]));
 let zaman = args[1]
 let sebep = args[2]
@@ -56,15 +39,16 @@ var vakit = zaman1
 .replace("h", " saat")
 .replace("d", " d");  
   
-kullanici.roles.add(cezalırol.id);
+kullanici.roles.add(cezalırol);
 kullanici.roles.cache.forEach(r => {
 kullanici.roles.remove(r.id)
 db.set(`${message.guild.id}.jail.${kullanici.id}.roles.${r.id}`, r.id )})
-client.channels.cache.get('763481961611395081').send(new MessageEmbed().setAuthor(message.member.displayName, message.author.avatarURL({dynamic: true})).setColor('RANDOM').setTimestamp().setDescription(`**Yetkili:** ${message.author} (\`${message.author.id}\`)\n**Kullanıcı:** ${kullanici.user.tag} (\`${kullanici.user.id}\`)\n**Tarih:** \`${moment(Date.now()).format("DD")} ${aylar[moment(Date.now()).format("MM")]} ${moment(Date.now()).add(10,"hours").format("YYYY HH:mm:ss")}\` `));
+moment.locale("tr");
+client.channels.cache.get('763481961611395081').send(new MessageEmbed().setAuthor(message.member.displayName, message.author.avatarURL({dynamic: true})).setColor('RANDOM').setTimestamp().setDescription(`**Yetkili:** ${message.author} (\`${message.author.id}\`)\n**Kullanıcı:** ${kullanici.user.tag} (\`${kullanici.user.id}\`)\n**Süre:** ${zaman1} \n**Tarih:** \`${moment(Date.now()).add(10,"hours").format("HH:mm:ss | DD MMMM YYYY")}\``));
 message.react('✅')
 setTimeout(async () =>{
-kullanici.roles.remove(cezalırol.id)
-client.channels.cache.get('763481961611395081').send(new MessageEmbed().setAuthor(message.member.displayName, message.author.avatarURL({dynamic: true})).setColor('RANDOM').setTimestamp().setDescription(`**Kullanıcının Cezası Bitti.**\n ${kullanici.user.tag} (\`${kullanici.user.id}\`)\n**Tarih:** \`${moment(Date.now()).add(10,"hours").format("YYYY HH:mm:ss")}\`${moment(Date.now()).format("DD")} ${aylar[moment(Date.now()).format("MM")]}`));
+kullanici.roles.remove(cezalırol)
+client.channels.cache.get('763481961611395081').send(new MessageEmbed().setAuthor(message.member.displayName, message.author.avatarURL({dynamic: true})).setColor('RANDOM').setTimestamp().setDescription(`**Kullanıcının Cezası Bitti.**\n ${kullanici.user.tag} (\`${kullanici.user.id}\`)\n**Süre:** ${zaman1} \n**Tarih:** \`${moment(Date.now()).add(10,"hours").format("HH:mm:ss | DD MMMM YYYY")}\``));
 }, ms(zaman));
             setTimeout(async () =>{
 message.guild.roles.cache.forEach(async r => {
