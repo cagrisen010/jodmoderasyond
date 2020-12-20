@@ -120,10 +120,14 @@ client.login(ayarlar.token);
 
 //------------------------------------------------------------------------------------------------------------\\
 
-client.renkler = {
+
+client.renk = {
   //"renksiz": "2F3136", // 0x36393E
   "mor": "#3c0149",
   "kirmizi": "#750b0c",
-  "yesil": "#42921b"
 };
 
+
+client.randomColor = function () {
+  return client.renk[Object.keys(client.renk).random()];
+};
