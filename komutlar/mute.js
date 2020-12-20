@@ -34,20 +34,51 @@ if (!mute) { new MessageEmbed().setColor('0x800d0d').setDescription(`${message.a
        .replace("h", " saat")
        .replace("d", " d");
         
-       try {
-         client.channels.cache.get('MUTE LOG').send(
+       {
+     
+         client.channels.cache.get('763481961611395081').send(
 new MessageEmbed()
 .setAuthor(message.author.username, message.author.avatarURL ({ dynamic: true}))
-.setColor('6ed5f16')
-.setDescription(`<@${member.id} (\`${member.id}\`) Metin Kanallarına Yazılış Engeli Verildi.
+.setColor('ffdb55')
+.setDescription(`<@${member.id}> (\`${member.id}\`) Metin Kanallarına Yazılışı Engellendi.
 
-Yetkili: <@${message.author.id} (\`${message.author.id}\`)
+Yetkili: <@${message.author.id}> (\`${message.author.id}\`)
 
 Zaman: \`${zamandilimi}\`
 
 Sebep: (\`${sebep}\`)
 
 Tarih: (\`${tarih}\`)
+`))
+mute.roles.add('763481961565782050')
+message.react('✅')
+          } 
+          setTimeout(async function() {
+            mute.roles.remove('')
+              client.channels.cache.get('MUTE LOG').send(
+              new Discord.MessageEmbed()
+              .setColor('#494459')
+              .setDescription(`<@${member.id}> (\`${member.id}\`)  Metin Kanallarına Yazılışı Engeli Kaldırıldı.
 
-`)
-  }
+Yetkili: <@${message.author.id}> (\`${message.author.id}\`) 
+
+Zaman: \`${vakit}\`
+
+Sebep: \`${sebep}\`)
+       
+Tarih: (\`${tarih}\``)
+
+);
+}, ms(zaman));
+        
+exports.conf = {
+  enabled: true,
+  guildOnly: true,
+  aliases: ["mute"],
+  permLevel: 0,
+  name: "mute"
+}
+
+exports.help = {
+  name: "mute"
+};
