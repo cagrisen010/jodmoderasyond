@@ -10,7 +10,7 @@ let member = message.guild.member(message.mentions.users.first() || message.guil
 if (!member) return message.channel.send(new MessageEmbed().setColor('0x800d0d').setDescription(`${message.author}, lütfen bir kullanıcı etiketle !`))
   
 let tarih = new Date().toLocaleString("tr-TR", { timeZone: "Asia/Istanbul"});
-let mute = message.mentions.members.first() || message.guild.members.cache.find(c => c.id === args[0]);
+let mute = message.mentions.members.first() || message.guild.members.cache.find(r => r.id === args[0]);
 if (!mute) { new MessageEmbed().setColor('0x800d0d').setDescription(`${message.author}, lütfen mute atmam gereken kullanıcı belirt !`);
 } else {
    if (mute.roles.highest.position >= message.member.roles.highest.position) 
@@ -24,7 +24,6 @@ if (!mute) { new MessageEmbed().setColor('0x800d0d').setDescription(`${message.a
      .replace("gün", "d");
       if (!zaman) { message.channel.send(new MessageEmbed().setColor('0x800d0d').setDescription(`Lütfen Bir zaman dilimi belirtin.`));
       } else {
-      
       let sebep = args[2]
       if(!sebep) return message.channel.send(new MessageEmbed().setColor('0x800d0d').setDescription(`Lütfen Bir sebep belirtiniz.`))  
         
@@ -52,24 +51,26 @@ Tarih: (\`${tarih}\`)
 `))
 mute.roles.add('763481961565782050')
 message.react('✅')
-          } 
-          setTimeout(async function() {
-            mute.roles.remove('')
-              client.channels.cache.get('MUTE LOG').send(
-              new Discord.MessageEmbed()
-              .setColor('#494459')
-              .setDescription(`<@${member.id}> (\`${member.id}\`)  Metin Kanallarına Yazılışı Engeli Kaldırıldı.
+} 
+setTimeout(async function() {
+mute.roles.remove('763481961565782050')
+client.channels.cache.get('763481961611395081').send(
+new MessageEmbed()
+.setColor('#494459')
+.setDescription(`<@${member.id}> (\`${member.id}\`) Metin Kanallarına Yazılış Engeli Kaldırıldı.
 
 Yetkili: <@${message.author.id}> (\`${message.author.id}\`) 
 
-Zaman: \`${vakit}\`
+Zaman: \`${zamandilimi}\`
 
-Sebep: \`${sebep}\`)
+Sebep: (\`${sebep}\`)
        
-Tarih: (\`${tarih}\``)
+Tarih: (\`${tarih}\`)`)
 
 );
 }, ms(zaman));
+
+      }}}}
         
 exports.conf = {
   enabled: true,
