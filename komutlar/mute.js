@@ -9,7 +9,7 @@ return message.channel.send(new MessageEmbed().setDescription(`${message.author}
 let member = message.guild.member(message.mentions.users.first() || message.guild.members.cache.get(args[0]));
 if (!member) return message.channel.send(new MessageEmbed().setColor('0x800d0d').setDescription(`${message.author}, lütfen bir kullanıcı etiketle !`))
   
-  
+let tarih = new Date().toLocaleString("tr-TR", { timeZone: "Asia/Istanbul"});
 let mute = message.mentions.members.first() || message.guild.members.cache.find(c => c.id === args[0]);
 if (!mute) { new MessageEmbed().setColor('0x800d0d').setDescription(`${message.author}, lütfen mute atmam gereken kullanıcı belirt !`);
 } else {
@@ -28,5 +28,26 @@ if (!mute) { new MessageEmbed().setColor('0x800d0d').setDescription(`${message.a
       let sebep = args[2]
       if(!sebep) return message.channel.send(new MessageEmbed().setColor('0x800d0d').setDescription(`Lütfen Bir sebep belirtiniz.`))  
         
-      let   
+      let zamandilimi = zaman
+       .replace("m", " dakika")
+       .replace("s", " saniye")
+       .replace("h", " saat")
+       .replace("d", " d");
+        
+       try {
+         client.channels.cache.get('MUTE LOG').send(
+new MessageEmbed()
+.setAuthor(message.author.username, message.author.avatarURL ({ dynamic: true}))
+.setColor('6ed5f16')
+.setDescription(`<@${member.id} (\`${member.id}\`) Metin Kanallarına Yazılış Engeli Verildi.
+
+Yetkili: <@${message.author.id} (\`${message.author.id}\`)
+
+Zaman: \`${zamandilimi}\`
+
+Sebep: (\`${sebep}\`)
+
+Tarih: (\`${tarih}\`)
+
+`)
   }
