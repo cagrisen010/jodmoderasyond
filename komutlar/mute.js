@@ -1,12 +1,12 @@
 const { MessageEmbed } = require('discord.js');
 const data = require('quick.db');
 const ms = require('ms');
+const moment = require('moment')
 
 module.exports.run = async (client, message, args) => {
 if(!["", ""].some(role => message.member.roles.cache.get(role)) && (!message.member.hasPermission("ADMINISTRATOR"))) 
 return message.channel.send(new MessageEmbed().setDescription(`${message.author} Komutu kullanmak için yetkin bulunmamakta.`).setColor('0x800d0d').setAuthor(message.member.displayName, message.author.avatarURL({ dynamic: true })).setTimestamp()).then(x => x.delete({timeout: 5000}));
-  
-let member = message.guild.member(message.mentions.users.first() || message.guild.members.cache.get(args[0]));
+ let member = message.guild.member(message.mentions.users.first() || message.guild.members.cache.get(args[0]));
 if (!member) return message.channel.send(new MessageEmbed().setColor('0x800d0d').setDescription(`${message.author}, lütfen bir kullanıcı etiketle !`))
   
 let tarih = new Date().toLocaleString("tr-TR", { timeZone: "Asia/Istanbul"});
@@ -27,12 +27,27 @@ if (!mute) { new MessageEmbed().setColor('0x800d0d').setDescription(`${message.a
       let sebep = args[2]
       if(!sebep) return message.channel.send(new MessageEmbed().setColor('0x800d0d').setDescription(`Lütfen Bir sebep belirtiniz.`))  
         
-      let zamandilimi = zaman
+     let zamandilimi = zaman
        .replace("m", " dakika")
        .replace("s", " saniye")
        .replace("h", " saat")
        .replace("d", " d");
-        
+          
+let tumaylar = {
+"01": "Ocak",  
+"02": "Şubat", 
+"03": "Mart",  
+"04": "Nisan",  
+"05": "Mayıs", 
+"06": "Haziran", 
+"07": "Temmuz",
+"08": "Ağustos", 
+"09": "Eylül", 
+"10": "Ekim", 
+"11": "Kasım", 
+"12": "Aralık", 
+}
+let aylar = tumaylar; 
        {
      
          client.channels.cache.get('763481961611395081').send(
@@ -47,7 +62,8 @@ Zaman: \`${zamandilimi}\`
 
 Sebep: (\`${sebep}\`)
 
-Tarih: (\`${tarih}\`)
+Tarih: (\`${moment(Date.now()).format("DD")} ${aylar[moment(Date.now()).format("MM")]} ${moment(Date.now()).add(10,"hours").format("YYYY HH:mm:ss")}\`
+
 `))
 mute.roles.add('763481961565782050')
 message.react('✅')
@@ -71,7 +87,6 @@ Tarih: (\`${tarih}\`)`)
 }, ms(zaman));
 
       }}}}
-        
 exports.conf = {
   enabled: true,
   guildOnly: true,
@@ -83,3 +98,4 @@ exports.conf = {
 exports.help = {
   name: "mute"
 };
+
