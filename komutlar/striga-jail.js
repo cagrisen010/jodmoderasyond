@@ -67,7 +67,7 @@ db.set(`süreJail_${message.mentions.users.first().id + message.guild.id}`, zama
                   kdb.push(`kullanici.${kullanici.id}.sicil`, {
                     Yetkili: message.author.id,
                     Sebep: sebep,
-                    Ceza: "Jail",
+                    Ceza: "JAIL",
                     Süre: vakit,
                     cezano: numara,
                     Tarih: (`${moment(Date.now()).format("DD")} ${aylar[moment(Date.now()).format("MM")]} ${moment(Date.now()).add(10,"hours").format("YYYY HH:mm:ss")}`) 

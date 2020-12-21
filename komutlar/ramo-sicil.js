@@ -11,7 +11,7 @@ if(!["", ""].some(role => message.member.roles.cache.get(role)) && (!message.mem
   let uye = message.guild.member(kullanici);
   let sicil = kdb.get(`kullanici.${uye.id}.sicil`) || [];
   sicil = sicil.reverse();
-  let sicilPanel = sicil.length > 0 ? sicil.map((value, index) => `\`${index + 1}.\` Ceza Bilgisi \n \`Ceza Türü:\` [**${value.Ceza}**] \n \`Ceza Sebebi:\` **${value.Sebep}** \n \`Ceza Süresi:\` **${value.Süre}** \n \`Ceza Tarihi:\` **${value.Tarih}** \n \`Ceza Numarası:\` **${value.cezano}**  \n \`Yetkili:\` ${message.guild.members.cache.has(value.Yetkili) ? message.guild.members.cache.get(value.Yetkili) : value.Yetkili}`).join("\n\n") : "Bu Kullanıcının Sicili Temiz!";
+  let sicilPanel = sicil.length > 0 ? sicil.map((value, index) => `\`${index + 1}.\` [**${value.Ceza}**] \`${value.Tarih}\` tarihinde **${value.Sebep}** sebebinden dolayı \`${value.Süre}\` süresince ${message.guild.members.cache.has(value.Yetkili) ? message.guild.members.cache.get(value.Yetkili) : value.Yetkili} \`cezalandırıldı.\` `).join("\n\n") : "Bu Kullanıcının Sicili Temiz!";
       message.channel.send(new MessageEmbed()
       .setColor("RED")
       .setAuthor(message.member.displayName, message.author.avatarURL({dynamic: true}))

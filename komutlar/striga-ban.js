@@ -47,7 +47,7 @@ kullanici.ban({reason: sebep}).then(x => message.react('✅')).catch();
                   kdb.push(`kullanici.${kullanici.id}.sicil`, {
                     Yetkili: message.author.id,
                     Sebep: sebep,
-                    Ceza: "Ban",
+                    Ceza: "BAN",
                     Süre: "Sınırsız",
                     cezano: numara,
                     Tarih: (`${moment(Date.now()).format("DD")} ${aylar[moment(Date.now()).format("MM")]} ${moment(Date.now()).add(10,"hours").format("YYYY HH:mm:ss")}`) 

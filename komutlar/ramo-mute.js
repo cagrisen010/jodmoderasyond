@@ -58,7 +58,7 @@ module.exports.run = async (client, message, args) => {
                   kdb.push(`kullanici.${member.id}.sicil`, {
                     Yetkili: message.author.id,
                     Sebep: sebep,
-                    Ceza: "Mute",
+                    Ceza: "MUTE",
                     Süre: zamandilimi,
                     cezano: numara,
                     Tarih: (`${moment(Date.now()).format("DD")} ${aylar[moment(Date.now()).format("MM")]} ${moment(Date.now()).add(10,"hours").format("YYYY HH:mm:ss")}`) 
