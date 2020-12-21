@@ -131,3 +131,35 @@ client.renk = {
 client.randomColor = function () {
   return client.renk[Object.keys(client.renk).random()];
 };
+
+
+
+client.on("message" , async ramo => {
+  
+  if(!ramo.guild) return;
+  if(ramo.content.startsWith(ayarlar.prefix+"afk")) return; 
+  
+  let afk = ramo.mentions.users.first()
+  
+  const kisi = db.fetch(`afkid_${ramo.author.id}_${ramo.guild.id}`)
+
+  const isim = db.fetch(`afkAd_${ramo.author.id}_${ramo.guild.id}`)
+ if(afk){
+   const sebep = db.fetch(`afkSebep_${afk.id}_${ramo.guild.id}`)
+   const kisi3 = db.fetch(`afkid_${afk.id}_${ramo.guild.id}`)
+   if(ramo.content.includes(kisi3)){
+
+       ramo.channel.send(new Discord.MessageEmbed().setColor('BLACK').setDescription(`Etiketlediğiniz Kişi Afk \nSebep : ${sebep}`))
+   }
+ }
+  if(ramo.author.id === kisi){
+
+       ramo.channel.send(new Discord.MessageEmbed().setColor('BLACK').setDescription(`Afk'lıktan Çıktınız`)
+   db.delete(`afkSebep_${ramo.author.id}_${ramo.guild.id}`)
+   db.delete(`afkid_${ramo.author.id}_${ramo.guild.id}`)
+   db.delete(`afkAd_${ramo.author.id}_${ramo.guild.id}`)
+    ramo.member.setNickname(isim)
+    
+  }
+  
+});

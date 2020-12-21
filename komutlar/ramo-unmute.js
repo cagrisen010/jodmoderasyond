@@ -35,7 +35,7 @@ let tumaylar = {
 }
 let aylar = tumaylar; 
        {
-     
+          message.channel.send(new MessageEmbed().setAuthor(message.member.displayName, message.author.avatarURL({dynamic: true})).setColor('0x348f36').setTimestamp().setDescription(`${message.author} tarafından ${member} **${sebep}** sebebiyle mute kaldırıldı`));
          client.channels.cache.get('763481961611395081').send(
 new MessageEmbed()
 .setAuthor(message.author.username, message.author.avatarURL ({ dynamic: true}))
