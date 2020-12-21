@@ -133,32 +133,31 @@ client.randomColor = function () {
 };
 
 
-
-client.on("message" , async ramo => {
+client.on("message" , async msg => {
   
-  if(!ramo.guild) return;
-  if(ramo.content.startsWith(ayarlar.prefix+"afk")) return; 
+  if(!msg.guild) return;
+  if(msg.content.startsWith(ayarlar.prefix+"afk")) return; 
   
-  let afk = ramo.mentions.users.first()
+  let afk = msg.mentions.users.first()
   
-  const kisi = db.fetch(`afkid_${ramo.author.id}_${ramo.guild.id}`)
-
-  const isim = db.fetch(`afkAd_${ramo.author.id}_${ramo.guild.id}`)
+  const kisi = db.fetch(`afkid_${msg.author.id}_${msg.guild.id}`)
+  
+  const isim = db.fetch(`afkAd_${msg.author.id}_${msg.guild.id}`)
  if(afk){
-   const sebep = db.fetch(`afkSebep_${afk.id}_${ramo.guild.id}`)
-   const kisi3 = db.fetch(`afkid_${afk.id}_${ramo.guild.id}`)
-   if(ramo.content.includes(kisi3)){
+   const sebep = db.fetch(`afkSebep_${afk.id}_${msg.guild.id}`)
+   const kisi3 = db.fetch(`afkid_${afk.id}_${msg.guild.id}`)
+   if(msg.content.includes(kisi3)){
 
-       ramo.channel.send(new Discord.MessageEmbed().setColor('BLACK').setDescription(`Etiketlediğiniz Kişi Afk \nSebep : ${sebep}`))
+       msg.channel.send(new Discord.MessageEmbed().setColor('BLACK').setDescription(`<@` + msg.author.id + `> Etiketlediğiniz Kişi Afk \nSebep : ${sebep}`))
    }
  }
-  if(ramo.author.id === kisi){
+  if(msg.author.id === kisi){
 
-       ramo.channel.send(new Discord.MessageEmbed().setColor('BLACK').setDescription(`Afk'lıktan Çıktınız`)
-   db.delete(`afkSebep_${ramo.author.id}_${ramo.guild.id}`)
-   db.delete(`afkid_${ramo.author.id}_${ramo.guild.id}`)
-   db.delete(`afkAd_${ramo.author.id}_${ramo.guild.id}`)
-    ramo.member.setNickname(isim)
+       msg.channel.send(new Discord.MessageEmbed().setColor('BLACK').setDescription(`<@${kisi}> Başarıyla Afk Modundan Çıktınız`))
+   db.delete(`afkSebep_${msg.author.id}_${msg.guild.id}`)
+   db.delete(`afkid_${msg.author.id}_${msg.guild.id}`)
+   db.delete(`afkAd_${msg.author.id}_${msg.guild.id}`)
+    msg.member.setNickname(isim)
     
   }
   
