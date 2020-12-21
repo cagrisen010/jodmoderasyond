@@ -42,7 +42,6 @@ var vakit = zaman1
 .replace("d", " d");  
   
 db.set(`cezali_${message.guild.id + kullanici.id}`, 'cezali')
-if(!db.has(`cezali_${message.guild.id + kullanici.id}`)) return message.channel.send(new MessageEmbed())
 db.set(`süreJail_${message.mentions.users.first().id + message.guild.id}`, zaman1)
   let tumaylar = {
         "01": "Ocak",  
