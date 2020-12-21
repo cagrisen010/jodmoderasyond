@@ -1,7 +1,8 @@
 const { MessageEmbed } = require('discord.js');
 const data = require('quick.db')
 const moment = require('moment')
-
+const jdb = new data.table("cezalar");
+const kdb = new data.table("kullanici");
 exports.run = async (client, message, args) => {
 
 if(!["", ""].some(role => message.member.roles.cache.get(role)) && (!message.member.hasPermission("ADMINISTRATOR"))) 
@@ -38,7 +39,20 @@ if(kullanici.id === message.author.id)return message.channel.send(new MessageEmb
 if(kullanici.id === client.user.id)return message.channel.send(new MessageEmbed().setDescription(`${message.author}, Bir botu sunucudan yasaklayamazsın`).setAuthor(message.member.displayName, message.author.avatarURL({ dynamic: true })).setColor('0x800d0d').setTimestamp()).then(x => x.delete({timeout: 5000}));
 if(kullanici.id === message.guild.OwnerID) return message.channel.send(new MessageEmbed().setDescription(`${message.author}, Sunucu sahibini sunucudan yasaklayamazsın.`).setAuthor(message.member.displayName, message.author.avatarURL({ dynamic: true })).setColor('0x800d0d').setTimestamp()).then(x => x.delete({timeout: 5000}));
 kullanici.ban({reason: sebep}).then(x => message.react('✅')).catch();
-     
+    let muteler = jdb.get(`tempmute`) || [];
+                if (!muteler.some(j => j.id == kullanici.id)) {
+                  kdb.add(`kullanici.${message.author.id}.mute`, 1);
+                    data.add('case', 1)
+                    const numara = await data.fetch('case')
+                  kdb.push(`kullanici.${kullanici.id}.sicil`, {
+                    Yetkili: message.author.id,
+                    Sebep: sebep,
+                    Ceza: "Ban",
+                    Süre: "Sınırsız",
+                    cezano: numara,
+                    Tarih: (`${moment(Date.now()).format("DD")} ${aylar[moment(Date.now()).format("MM")]} ${moment(Date.now()).add(10,"hours").format("YYYY HH:mm:ss")}`) 
+                  });
+                };    
 message.channel.send(new MessageEmbed().setDescription(`${message.author} tarafından ${kullanici} \`${sebep}\` Sebebiyle Sunucudan Yasaklandı.`).setAuthor(message.member.displayName, message.author.avatarURL({dynamic: true})).setColor('0x348f36').setTimestamp()) 
 client.channels.cache.get('763481961611395081').send(new MessageEmbed().setAuthor(message.member.displayName, message.author.avatarURL({dynamic: true})).setColor('RANDOM').setTimestamp().setDescription(`**Banlayan Yetkili:** ${message.author.id} (\`${message.author.id}\`)\n**Banlanan Üye:** ${kullanici.user.tag} (\`${kullanici.user.id}\`)\n**Tarih:** \`${moment(Date.now()).format("DD")} ${aylar[moment(Date.now()).format("MM")]} ${moment(Date.now()).add(10,"hours").format("YYYY HH:mm:ss")}\` `));
 }

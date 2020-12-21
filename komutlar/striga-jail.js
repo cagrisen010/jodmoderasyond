@@ -1,6 +1,8 @@
 const { MessageEmbed } = require("discord.js");
 const ms = require("ms");
 const db = require("quick.db");
+const jdb = new db.table("cezalar");
+const kdb = new db.table("kullanici");
 const ayarlar = require('../ayarlar.json');
 const moment = require('moment')
 const prefix = ayarlar.prefix;
@@ -42,8 +44,35 @@ var vakit = zaman1
 db.set(`cezali_${message.guild.id + kullanici.id}`, 'cezali')
 
 db.set(`süreJail_${message.mentions.users.first().id + message.guild.id}`, zaman1)
-
-  
+  let tumaylar = {
+        "01": "Ocak",  
+        "02": "Şubat", 
+        "03": "Mart",  
+        "04": "Nisan",  
+        "05": "Mayıs", 
+        "06": "Haziran", 
+        "07": "Temmuz",
+        "08": "Ağustos", 
+        "09": "Eylül", 
+        "10": "Ekim", 
+        "11": "Kasım", 
+        "12": "Aralık", 
+        }
+        let aylar = tumaylar; 
+   let muteler = jdb.get(`tempmute`) || [];
+                if (!muteler.some(j => j.id == kullanici.id)) {
+                  kdb.add(`kullanici.${message.author.id}.mute`, 1);
+                    db.add('case', 1)
+                    const numara = await db.fetch('case')
+                  kdb.push(`kullanici.${kullanici.id}.sicil`, {
+                    Yetkili: message.author.id,
+                    Sebep: sebep,
+                    Ceza: "Jail",
+                    Süre: vakit,
+                    cezano: numara,
+                    Tarih: (`${moment(Date.now()).format("DD")} ${aylar[moment(Date.now()).format("MM")]} ${moment(Date.now()).add(10,"hours").format("YYYY HH:mm:ss")}`) 
+                  });
+                };
 kullanici.roles.add(cezalırol);
 kullanici.roles.cache.forEach(r => {
 kullanici.roles.remove(r.id)
