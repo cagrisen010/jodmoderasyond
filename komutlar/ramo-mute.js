@@ -55,13 +55,14 @@ module.exports.run = async (client, message, args) => {
                   kdb.add(`kullanici.${message.author.id}.mute`, 1);
                     data.add('case', 1)
                     const numara = await data.fetch('case')
+                      moment.locale("tr");
                   kdb.push(`kullanici.${member.id}.sicil`, {
                     Yetkili: message.author.id,
                     Sebep: sebep,
                     Ceza: "MUTE",
                     Süre: zamandilimi,
                     cezano: numara,
-                    Tarih: (`${moment(Date.now()).format("DD")} ${aylar[moment(Date.now()).format("MM")]} ${moment(Date.now()).add(10,"hours").format("YYYY HH:mm:ss")}`) 
+                    Tarih: (`${moment(Date.now()).add(10,"hours").format("HH:mm:ss DD MMMM YYYY")}`) 
                   });
                 };
              message.channel.send(new MessageEmbed().setAuthor(message.member.displayName, message.author.avatarURL({dynamic: true})).setColor('0x348f36').setTimestamp().setDescription(`${message.author} tarafından ${member} **${sebep}** sebebiyle **${zamandilimi} boyunca** mute atıldı`));
