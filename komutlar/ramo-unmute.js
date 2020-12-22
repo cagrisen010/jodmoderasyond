@@ -23,7 +23,19 @@ if (mute.roles.highest.position >= message.member.roles.highest.position)
 } else {
 let sebep = args[1]
 if(!sebep) return message.channel.send(new MessageEmbed().setColor('0x800d0d').setDescription(`Lütfen Bir sebep belirtiniz.`))  
-   
+  
+let zaman1 = args[1]
+.replace("sn", "s")
+.replace("dk", "m")
+.replace("sa", "h")
+.replace("gün", "d");
+//
+var vakit = zaman1
+.replace("m", " dakika")
+.replace("s", " saniye")
+.replace("h", " saat")
+.replace("d", " d");  
+  
 let tumaylar = {
 "01": "Ocak",  
 "02": "Şubat", 
@@ -46,13 +58,12 @@ client.channels.cache.get(mutelog).send(
 new MessageEmbed()
 .setAuthor(message.author.username, message.author.avatarURL ({ dynamic: true}))
 .setColor('009caf')
-.setDescription(`<@${member.id}> (\`${member.id}\`) Metin Kanallarına Yazılış Engeli Kaldırıldı.
-
+.setDescription(`
+<@${member.id}> (\`${member.id}\`) Metin Kanallarına Yazılış Engeli Kaldırıldı.
 Yetkili: <@${message.author.id}> (\`${message.author.id}\`)
-
-Sebep: (\`${sebep}\`)
-
-Tarih: (\`${moment(Date.now()).add(10,"hours").format("HH:mm:ss DD MMMM YYYY")}\`)
+**Süre:** \`${vakit}\`
+**Sebep:** \`${sebep}\`
+**Tarih:** \`${moment(Date.now()).add(10,"hours").format("HH:mm:ss DD MMMM YYYY")}\`)
 
 `))
 mute.roles.remove(muterol)

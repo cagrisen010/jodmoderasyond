@@ -81,6 +81,7 @@ new MessageEmbed()
 .setAuthor(message.author.username, message.author.avatarURL ({ dynamic: true}))
 .setColor('ffdb55')
 .setDescription(`
+**Metin Kanallarında Susturuldu !**
 **Kullanıcı:** <@${member.id}> (\`${member.id}\`)
 **Yetkili:** <@${message.author.id}> (\`${message.author.id}\`)
 **Süre:** \`${zamandilimi}\`
@@ -97,7 +98,7 @@ new MessageEmbed()
 .setColor('#494459')
 .setTimestamp()
 .setDescription(`
-**Kullanıcının Cezası Bitti**
+**Metin Kanallarında Susturulması Bitti !**
 **Kullanıcı:** <@${member.id}> (\`${member.id}\`)
 **Süre:** \`${zamandilimi}\`
 **Tarih:** (\`${moment(Date.now()).format("DD")} ${aylar[moment(Date.now()).format("MM")]} ${moment(Date.now()).add(10,"hours").format("YYYY HH:mm:ss")}\`)`)
