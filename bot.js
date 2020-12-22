@@ -121,18 +121,6 @@ client.login(ayarlar.token);
 //------------------------------------------------------------------------------------------------------------\\
 
 
-client.renk = {
-  //"renksiz": "2F3136", // 0x36393E
-  "mor": "#3c0149",
-  "kirmizi": "#750b0c",
-};
-
-
-client.randomColor = function () {
-  return client.renk[Object.keys(client.renk).random()];
-};
-
-
 client.on("message" , async msg => {
   
   if(!msg.guild) return;
@@ -164,3 +152,71 @@ client.on("message" , async msg => {
 });
 
 
+//--------------------------------------------------------------------------------------\\
+
+client.on('guildMemberAdd', async(member) => {
+let rol = member.guild.roles.cache.find(r => r.name === "CEZALI ROLÜNÜN ADI NEYSE YAZ");
+let cezalımı = db.fetch(`cezali_${member.guild.id + member.id}`)
+let sürejail = db.fetch(`süreJail_${member.id + member.guild.id}`)
+if (!cezalımı) return;
+if (cezalımı == "cezali") {
+member.roles.add(ayarlar.JailCezalıRol)
+ 
+member.send("Cezalıyken Sunucudan Çıktığın için Yeniden Cezalı Rolü Verildi!")
+ setTimeout(function(){
+    // msg.channel.send(`<@${user.id}> Muten açıldı.`)
+db.delete(`cezali_${member.guild.id + member.id}`)
+    member.send(`<@${member.id}> Cezan açıldı.`)
+    member.roles.remove('cezalı rol id');
+  }, ms(sürejail));
+}
+})
+
+//--------------------------------------------------------------------------------------\\
+
+client.on('guildMemberAdd', async(member) => {
+let mute = member.guild.roles.cache.find(r => r.name === "MUTELİ ROLÜNÜN ADI NEYSE YAZ");
+let mutelimi = db.fetch(`muteli_${member.guild.id + member.id}`)
+let süre = db.fetch(`süre_${member.id + member.guild.id}`)
+if (!mutelimi) return;
+if (mutelimi == "muteli") {
+member.roles.add(ayarlar.MuteliRol)
+ 
+member.send("Muteliyken Sunucudan Çıktığın için Yeniden Mutelendin!")
+ setTimeout(function(){
+    // msg.channel.send(`<@${user.id}> Muten açıldı.`)
+db.delete(`muteli_${member.guild.id + member.id}`)
+    member.send(`<@${member.id}> Muten açıldı.`)
+    member.roles.remove('muteli rol id');
+  }, ms(süre));
+}
+})
+
+//--------------------------------------------------------------------------------------\\
+
+
+client.on('guildMemberAdd', async member => {
+const data = require('quick.db')
+const asd = data.fetch(`${member.guild.id}.jail.${member.id}`)
+if(asd) {
+let data2 = await data.fetch(`jailrol_${member.guild.id}`)
+let rol = member.guild.roles.cache.get(data2)
+if(!rol) return;
+let kişi = member.guild.members.cache.get(member.id)
+kişi.roles.add(rol.id);
+kişi.roles.cache.forEach(r => {
+kişi.roles.remove(r.id)
+data.set(`${member.guild.id}.jail.${kişi.id}.roles.${r.id}`, r.id )})
+    data.set(`${member.guild.id}.jail.${kişi.id}`)
+  const wasted = new Discord.MessageEmbed()
+  .setAuthor(member.user.tag, member.user.avatarURL({ dynamic : true }))
+  .setColor(`#f3c7e1`)
+  .setDescription(`Jaildan Kaçamazsın!`)
+  .setTimestamp()
+    member.send(wasted)
+} 
+  
+  
+})
+
+//--------------------------------------------------------------------------------------\\
