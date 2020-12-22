@@ -12,6 +12,7 @@ require('./util/eventLoader.js')(client);//
 const path = require('path');//
 const snekfetch = require('snekfetch');//
 const ms = require('ms');//
+const tags = require('common-tags')
 //
 
 var prefix = ayarlar.prefix;//
