@@ -1,4 +1,3 @@
-  
 const { MessageEmbed } = require("discord.js");
 const data = require("quick.db");
 const jdb = new data.table("cezalar");
