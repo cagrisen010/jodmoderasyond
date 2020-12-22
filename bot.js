@@ -120,6 +120,75 @@ client.login(ayarlar.token);
 
 //------------------------------------------------------------------------------------------------------------\\
 
+client.on("message", message => {
+    if(message.content.toLowerCase() == "!tag") 
+    return message.channel.send(`TAG`)
+});
+
+client.on("message", message => {
+    if(message.content.toLowerCase() == "-tag") 
+    return message.channel.send(`TAG`)
+});
+
+client.on("message", message => {
+    if(message.content.toLowerCase() == "u!tag") 
+    return message.channel.send(`TAG`)
+});
+
+client.on("message", message => {
+    if(message.content.toLowerCase() == "u.tag") 
+    return message.channel.send(`TAG`)
+});
+
+client.on("message", message => {
+    if(message.content.toLowerCase() == "u-tag") 
+    return message.channel.send(`TAG`)
+});
+
+client.on("message", message => {
+    if(message.content.toLowerCase() == ".tag") 
+    return message.channel.send(`TAG`)
+});
+
+//------------------------------------------------------------------------------------------------------------\\
+
+client.on("message", message => {
+    if(message.content.toLowerCase() == "sa") 
+    return message.channel.send(`${message.author}, Aleyküm Selam.`)
+});
+
+client.on("message", message => {
+    if(message.content.toLowerCase() == "selam") 
+    return message.channel.send(`${message.author}, Selam hoşgeldin.`)
+});
+
+client.on("message", message => {
+    if(message.content.toLowerCase() == "merhaba") 
+    return message.channel.send(`${message.author}, Merhaba hoşgeldin.`)
+});
+
+client.on("message", message => {
+    if(message.content.toLowerCase() == "striga") 
+    return message.channel.send(`Striga adamdır :heart: :heart:`)
+});
+
+client.on("message", message => {
+    if(message.content.toLowerCase() == "s.a") 
+    return message.channel.send(`${message.author}, Aleyküm Selam.`)
+});
+
+client.on("message", message => {
+    if(message.content.toLowerCase() == "mrb") 
+    return message.channel.send(`${message.author}, Aleyküm Selam.`)
+});
+
+client.on("message", message => {
+    if(message.content.toLowerCase() == "slm") 
+    return message.channel.send(`${message.author}, Selam hoşgeldin.`)
+});
+
+//------------------------------------------------------------------------------------------------------------\\
+
 
 client.on("message" , async msg => {
   
@@ -220,3 +289,5 @@ data.set(`${member.guild.id}.jail.${kişi.id}.roles.${r.id}`, r.id )})
 })
 
 //--------------------------------------------------------------------------------------\\
+
+

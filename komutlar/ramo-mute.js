@@ -4,20 +4,19 @@ const jdb = new data.table("cezalar");
 const kdb = new data.table("kullanici");
 const ms = require('ms');
 const moment = require('moment');
+const ayarlar = require('../ayarlar.json')
 module.exports.run = async (client, message, args) => {
 
-if(!["", ""].some(role => message.member.roles.cache.get(role)) && (!message.member.hasPermission("ADMINISTRATOR"))) 
+if(!message.member.roles.cache.has(ayarlar.MuteYetkilisi) && !message.member.hasPermission("ADMINISTRATOR")) return;
 return message.channel.send(new MessageEmbed().setDescription(`${message.author} Komutu kullanmak için yetkin bulunmamakta.`).setColor('0x800d0d').setAuthor(message.member.displayName, message.author.avatarURL({ dynamic: true })).setTimestamp()).then(x => x.delete({timeout: 5000}));
+
   
-const mutelog = message.guild.channels.cache.find(c => c.id === '763481961611395081')
-const muterol = message.guild.roles.cache.find(r => r.id === '763481961565782050')
+let mutelog = ayarlar.MuteLogKanalı
+let muterol = ayarlar.MuteliRol
 
 
-if(!["", ""].some(role => message.member.roles.cache.get(role)) && (!message.member.hasPermission("ADMINISTRATOR"))) 
-return message.channel.send(new MessageEmbed().setDescription(`${message.author} Komutu kullanmak için yetkin bulunmamakta.`).setColor('0x800d0d').setAuthor(message.member.displayName, message.author.avatarURL({ dynamic: true })).setTimestamp()).then(x => x.delete({timeout: 5000}));
- 
-  let member = message.guild.member(message.mentions.users.first() || message.guild.members.cache.get(args[0]));
-  if (!member) return message.channel.send(new MessageEmbed().setColor('0x800d0d').setDescription(`${message.author}, lütfen bir kullanıcı etiketle !`))
+let member = message.guild.member(message.mentions.users.first() || message.guild.members.cache.get(args[0]));
+if (!member) return message.channel.send(new MessageEmbed().setColor('0x800d0d').setDescription(`${message.author}, lütfen bir kullanıcı etiketle !`))
           
 let mute = message.mentions.members.first() || message.guild.members.cache.find(r => r.id === args[0]);
 if (!mute) { new MessageEmbed().setColor('0x800d0d').setDescription(`${message.author}, lütfen mute atmam gereken kullanıcı belirt !`);
@@ -74,9 +73,12 @@ Tarih: (`${moment(Date.now()).add(10,"hours").format("HH:mm:ss DD MMMM YYYY")}`)
 });
 };
                  
+data.set(`muteli_${member.guild.id + member.id}`, 'muteli')
+data.set(`süre_${member.id + member.guild.id}`, zamandilimi)
+                 
 message.react('✅')          
 message.channel.send(new MessageEmbed().setAuthor(message.member.displayName, message.author.avatarURL({dynamic: true})).setColor('0x348f36').setTimestamp().setDescription(`${message.author} tarafından ${member} **${sebep}** sebebiyle **${zamandilimi} boyunca** mute atıldı`));
-mutelog.send(
+mutelog.send( 
 new MessageEmbed()
 .setAuthor(message.author.username, message.author.avatarURL ({ dynamic: true}))
 .setColor('ffdb55')
@@ -107,8 +109,7 @@ new MessageEmbed()
         
 }}}
  
-  
-};
+  };
 exports.conf = {
     enabled: true,
     guildOnly: true,
