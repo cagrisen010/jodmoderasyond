@@ -3,10 +3,10 @@ const datab = require('quick.db')
 const moment = require('moment')
 exports.run = async (client, message, args) => {
 
-if(!["", ""].some(role => message.member.roles.cache.get(role)) && (!message.member.hasPermission("ADMINISTRATOR"))) 
+if(![""].some(role => message.member.roles.cache.get(role)) && (!message.member.hasPermission("ADMINISTRATOR"))) 
 return message.channel.send(new MessageEmbed().setDescription(`${message.author} Komutu kullanmak için yetkin bulunmamakta.`).setColor('0x800d0d').setAuthor(message.member.displayName, message.author.avatarURL({ dynamic: true })).setTimestamp()).then(x => x.delete({timeout: 5000}));
 
-const banlog = message.guild.channel.cache.find(c => c.id === '763481961611395081')
+const banlog = message.guild.channels.cache.find(c => c.id === '763481961611395081')
   
           let tumaylar = {
         "01": "Ocak",  
@@ -24,17 +24,15 @@ const banlog = message.guild.channel.cache.find(c => c.id === '76348196161139508
         }
   let aylar = tumaylar;
   
-  
-let kullanici = message.mentions.users.first() || client.users.cache.get(args[0])
-if(!kullanici)return message.channel.send(new MessageEmbed().setDescription(`${message.author}, Kimin yasağını kaldırmam gerekiyorsa ID'sini gir.`).setColor('0x800d0d').setAuthor(message.member.displayName, message.author.avatarURL({ dynamic: true })).setTimestamp()).then(x => x.delete({timeout: 5000}));
-  
-message.guild.unban(kullanici)
-message.channel.send(new MessageEmbed().setDescription(`${message.author} tarafından ${kullanici} adlı kullanıcının sunucu yasağı kaldırıldı.`).setColor('0x0x348f36').setAuthor(message.member.displayName, message.author.avatarURL({ dynamic:true })).then(x => x.delete({ timeout: 5000})));
-  
-  
-client.channels.cache.get(banlog).send(new MessageEmbed().setAuthor(message.member.displayName, message.author.avatarURL({dynamic: true})).setColor('RANDOM').setTimestamp().setDescription(`**Yetkili:** ${message.author.id} (\`${message.author.id}\`)\n**Üye:** ${kullanici.user.tag} (\`${kullanici.user.id}\`)\n**Tarih:** \`${moment(Date.now()).format("DD")} ${aylar[moment(Date.now()).format("MM")]} ${moment(Date.now()).add(10,"hours").format("YYYY HH:mm:ss")}\` `));
+let kisi = await client.users.fetch(args[0]);
+if(!kisi) return message.channel.send(new MessageEmbed().setDescription(`${message.author} bir ID belirtmelisin.`).setColor('0x800d0d').setAuthor(message.member.displayName, message.author.avatarURL({ dynamic: true })).setTimestamp()).then(x => x.delete({timeout: 5000}));
 
-  };
+message.guild.members.unban(kisi.id)
+message.channel.send(new MessageEmbed().setDescription(`${message.author} tarafından ${kisi} adlı kullanıcının sunucu yasağı kaldırıldı.`).setColor('0x348f36').setAuthor(message.member.displayName, message.author.avatarURL({ dynamic:true }))).then(x => x.delete({ timeout: 5000}))
+  
+  
+client.channels.cache.get('763481961611395081').send(new MessageEmbed().setColor('0x348f36').setAuthor(message.member.displayName, message.authhor.avatarURL({ dynami })).setTimestamp().setDescription(`**Kaldıran Yetkili:** ${message.author} (\`${message.author.id}\`) \n**Banı Kaldırılan Üye:** ${kisi.tag} (\`${kisi.id}\`) \n**Ban Kaldırma Tarihi:** \`\`${moment(Date.now()).add(10,"hours").format("HH:mm:ss DD MMMM YYYY")}\`\``));
+
 
   exports.conf = {
   enabled: true,
@@ -47,4 +45,3 @@ client.channels.cache.get(banlog).send(new MessageEmbed().setAuthor(message.memb
   name: 'unban'
 }
 
-  
