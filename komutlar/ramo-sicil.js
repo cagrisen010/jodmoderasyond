@@ -21,7 +21,14 @@ message.channel.send(new MessageEmbed()
 .setAuthor(message.member.displayName, message.author.avatarURL({dynamic: true}))
 .setDescription(`**<@!${uye.id}> İsimli Kullanıcının Sicili** \n\n ${sicilPanel}`)
 .setFooter(`Ramo`))
+  if (kullanici) {
+const sicilsıfır = args[1]
+if(!sicilsıfır) return message.channel.send(new MessageEmbed().setDescription('Üye etiketle'))
+  if (sicilsıfır == 'sıfırla') {
+    qdb.delete(`kullanici.${uye.id}.sicil`)
+    message.channel.send(`sicil sıfırl`)
 
+  }}
 };
 
 module.exports.conf = {
