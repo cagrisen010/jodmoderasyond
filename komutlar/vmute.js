@@ -69,7 +69,6 @@ Ceza: "VMUTE",
 Süre: sure,
 Tarih: (`${moment(Date.now()).add(10,"hours").format("HH:mm:ss DD MMMM YYYY")}`) 
 });
-}; 
 
 message.channel.send(new MessageEmbed().setAuthor(message.member.displayName, message.author.avatarURL({dynamic: true})).setColor('0x348f36').setTimestamp().setDescription(`${message.author} tarafından ${kullanici} \`${sebep}\` sebebiyle seste susturuldu.`));
  
@@ -77,9 +76,8 @@ mutelog.send(new MessageEmbed().setAuthor(message.member.displayName, message.au
 kullanici.voice.setMute(true);  
 mutelog.send(new MessageEmbed().setColor('RANDOM').setAuthor(message.member.displayName, message.author.avatarURL({dynamic: true})).setDescription(`**Yetkili:** ${message.author} (\`${message.author.id}\`)\n**Kullanıcı:** ${kullanici.user} (\`${kullanici.user.id}\`)\n**Süre:** \`${zaman1}\`\n**Sebep**: \`${sebep}\` \n**Tarih:** \`${moment(Date.now()).add(10,"hours").format("HH:mm:ss DD MMMM YYYY")}\``))}
 
- 
-ms(sure)
-
+  
+}; 
 exports.conf = {
   enabled: true,
   guildOnly: true,
