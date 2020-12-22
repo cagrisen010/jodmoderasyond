@@ -44,6 +44,7 @@ var vakit = zaman1
   
 db.set(`cezali_${message.guild.id + kullanici.id}`, 'cezali')
 db.set(`süreJail_${message.mentions.users.first().id + message.guild.id}`, zaman1)
+  
   let tumaylar = {
         "01": "Ocak",  
         "02": "Şubat", 
@@ -87,9 +88,9 @@ jaillog.send(new MessageEmbed().setAuthor(message.member.displayName, message.au
 }, ms(zaman));
             setTimeout(async () =>{
 message.guild.roles.cache.forEach(async r => {
-const i = await db.fetch(`${message.guild.id}.jail.${kullanici.id}.roles.${r.id}` )
-if(i != r.id)  return ;
-if(i){kullanici.roles.add(i)}
+const roller = await db.fetch(`${message.guild.id}.jail.${kullanici.id}.roles.${r.id}` )
+if(roller != r.id)  return ;
+if(roller){kullanici.roles.add(roller)}
 db.delete(`${message.guild.id}.jail.${kullanici.id}.roles.${r.id}`)
 })
               }, ms(zaman));

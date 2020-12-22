@@ -76,34 +76,27 @@ mutelog.send(
 new MessageEmbed()
 .setAuthor(message.author.username, message.author.avatarURL ({ dynamic: true}))
 .setColor('ffdb55')
-.setDescription(`<@${member.id}> (\`${member.id}\`) Metin Kanallarına Yazılışı Engellendi.
-        
-Yetkili: <@${message.author.id}> (\`${message.author.id}\`)
-        
-Zaman: \`${zamandilimi}\`
-        
-Sebep: (\`${sebep}\`)
-        
-Tarih: (\`${moment(Date.now()).add(10,"hours").format("HH:mm:ss DD MMMM YYYY")}\`)
+.setDescription(`
+**Kullanıcı:** <@${member.id}> (\`${member.id}\`)
+**Yetkili:** <@${message.author.id}> (\`${message.author.id}\`)
+**Süre:** \`${zamandilimi}\`
+**Tarih:** (\`${moment(Date.now()).add(10,"hours").format("HH:mm:ss DD MMMM YYYY")}\`)
         
 `))
 mute.roles.add(muterol)
 message.react('✅')
 } 
 setTimeout(async function() {
-mute.roles.remove(m)
-mutelog('763481961611395081').send(
+mute.roles.remove(muterol)
+mutelog.send(
 new MessageEmbed()
 .setColor('#494459')
-.setDescription(`<@${member.id}> (\`${member.id}\`) Metin Kanallarına Yazılış Engeli Kaldırıldı.
-        
-Yetkili: <@${message.author.id}> (\`${message.author.id}\`) 
-        
-Zaman: \`${zamandilimi}\`
-        
-Sebep: (\`${sebep}\`)
-               
-Tarih: (\`${moment(Date.now()).format("DD")} ${aylar[moment(Date.now()).format("MM")]} ${moment(Date.now()).add(10,"hours").format("YYYY HH:mm:ss")}\`)`)
+.setTimestamp()
+.setDescription(`
+**Kullanıcının Cezası Bitti**
+**Kullanıcı:** <@${member.id}> (\`${member.id}\`)
+**Süre:** \`${zamandilimi}\`
+**Tarih:** (\`${moment(Date.now()).format("DD")} ${aylar[moment(Date.now()).format("MM")]} ${moment(Date.now()).add(10,"hours").format("YYYY HH:mm:ss")}\`)`)
 );
 }, ms(zaman));
         
