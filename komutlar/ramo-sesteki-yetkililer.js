@@ -1,21 +1,21 @@
 const Discord = require("discord.js");
 module.exports.run = async (client, message, args) => {
-  let ramo = "**Sesli Kanalda Olan Yetkililer:\n**";
-  let ramo2 = "**Sesli Kanalda Olmayan Yetkililer:\n**";
-  message.guild.roles.cache.get("763481961518858267").members.map(e => {
-    ramo += e.voice.channel ? "•  <@" + e.user.id + ">\n" : "";
-    ramo2 += !e.voice.channel ? "•  <@" + e.user.id + ">\n" : "";
+  let ramo = "**Sesli Kanalda Olan Yetkililer:**\n";
+  let ramo2 = "**Sesli Kanalda Olmayan Yetkililer:**\n";
+  message.guild.roles.cache.get("763481961518858267").members.map(r => {
+    ramo += r.voice.channel ? "•  <@" + r.user.id + ">\n" : "";
+    ramo2 += !r.voice.channel ? "•  <@" + r.user.id + ">\n" : "";
   });
 
-  const dcse = new Discord.MessageEmbed()
+  const ramoembed = new Discord.MessageEmbed()
     .setAuthor(message.member.displayName, message.author.avatarURL({dynamic: true}))
     .setColor("RANDOM")
     .setTimestamp()
     .setDescription("" + ramo + "" + ramo2 + "")
-  message.channel.send(dcse).then(a => a.s);
+  message.channel.send(ramoembed).then(s => s.s);
 };
 module.exports.conf = {
-  aliases: []
+  aliases: ["sesli"]
 };
 
 module.exports.help = {
