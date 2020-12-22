@@ -9,7 +9,7 @@ return message.channel.send(new MessageEmbed().setDescription(`${message.author}
 //-------------------------------------------------------------------------------\\  
   
 
-let tag = "a";
+let tag = "tag";
 const ttag = message.guild.members.cache.filter(m => m.user.username.includes(tag)).size
 
 const embed = new MessageEmbed()

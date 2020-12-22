@@ -1,19 +1,5 @@
 {
   "prefix" : ".",
   "sahip" : "164843533201702922",
-  "token" : "NzY3NzMyNTE3MjAwNDYxODg0.X42Mnw.mZundfNol4xSAe3LMPUzaEO2AE4",
-  
-  
-  "BanYetkilisi": ["", ""],
-  "BanLogKanalı": "",
-  
-  "JailYetkilisi": ["", ""],
-  "JailCezalıRol": "",
-  "JailLogKanalı": "",
-  
-  "MuteYetkilisi": ["763481961531965476"],
-  "MuteliRol": "763481961565782050",
-  "MuteLogKanalı": "763481961611395080"
-  
-  
+  "token" : "NzY3NzMyNTE3MjAwNDYxODg0.X42Mnw.mZundfNol4xSAe3LMPUzaEO2AE4"
 }

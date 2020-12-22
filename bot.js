@@ -279,8 +279,8 @@ data.set(`${member.guild.id}.jail.${kişi.id}.roles.${r.id}`, r.id )})
     data.set(`${member.guild.id}.jail.${kişi.id}`)
   const wasted = new Discord.MessageEmbed()
   .setAuthor(member.user.tag, member.user.avatarURL({ dynamic : true }))
-  .setColor(`#f3c7e1`)
-  .setDescription(`Jaildan Kaçamazsın!`)
+  .setColor(`#0x800d0d`)
+  .setDescription(`Dostum hadi ama !!! Jaildan Kaçamazsın ikimizde birbirimizi kandırmayalım...!`)
   .setTimestamp()
     member.send(wasted)
 } 
@@ -347,8 +347,8 @@ client.on("message", msg => {
           try {
             if (!msg.member.hasPermission("BAN_MEMBERS")) {
                   msg.delete();
-                    return msg.reply('**Bu Sunucuda** `Reklam Engelle`** Aktif Reklam Yapmana İzin Vermem İzin Vermem ? !**').then(msg => msg.delete(3000));
-   
+                    return msg.channel.send(new Discord.MessageEmbed().setDescription(`${msg.author} Bu sunucuda reklam filtresi etkin.`).setColor('0x800d0d').setAuthor(msg.member.displayName, msg.author.avatarURL({ dynamic: true })).setTimestamp()).then(x => x.delete({timeout: 5000}));
+  
  
   msg.delete(3000);                              
  
