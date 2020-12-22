@@ -1,6 +1,6 @@
 const { MessageEmbed } = require('discord.js')
 const datab = require('quick.db')
-
+const moment = require('moment')
 exports.run = async (client, message, args) => {
 
 if(!["", ""].some(role => message.member.roles.cache.get(role)) && (!message.member.hasPermission("ADMINISTRATOR"))) 
@@ -10,8 +10,7 @@ const cezalırol = '763481961565782049'
 const jaillog = message.guild.channels.cache.find(c => c.id === '763481961611395081')
 
 let kullanici = message.guild.member(message.mentions.members.first() || message.guild.members.cache.get(args[0]));
-let zaman = args[1]
-let sebep = args[2]
+let sebep = args[1]
 if(!kullanici) return message.channel.send(new MessageEmbed().setDescription(`${message.author}, Bir kullanıcı etiketlemelisin.`).setAuthor(message.member.displayName, message.author.avatarURL({ dynamic: true })).setColor('0x800d0d').setTimestamp()).then(x => x.delete({timeout: 5000}));
 if(!sebep) return message.channel.send(new MessageEmbed().setDescription(`${message.author}, Bir sebep belirtmelisin.`).setAuthor(message.member.displayName, message.author.avatarURL({ dynamic: true })).setColor('0x800d0d').setTimestamp()).then(x => x.delete({timeout: 5000}));
 if(message.member.roles.highest.position <= kullanici.roles.highest.position) return message.channel.send(new MessageEmbed().setDescription(`${message.author}, Etiketlenen kullanıcı sizden üst/aynı pozisyondadır.`).setAuthor(message.member.displayName, message.author.avatarURL({ dynamic: true })).setColor('0x800d0d').setTimestamp()).then(x => x.delete({timeout: 5000}));
@@ -32,7 +31,7 @@ var vakit = zaman1
 .replace("d", " d");  
   
 datab.delete(`cezali_${message.guild.id + kullanici.id}`, 'cezali')
-datab.delete(`süreJail_${message.mentions.users.first().id + message.guild.id}`,)
+datab.delete(`süreJail_${message.mentions.users.first().id + message.guild.id}`, zaman1)
 
 let tumaylar = {
 "01": "Ocak",  
@@ -50,11 +49,28 @@ let tumaylar = {
 }
 let aylar = tumaylar;
   
+
+moment.locale("tr");
+jaillog.send(new MessageEmbed().setAuthor(message.member.displayName, message.author.avatarURL({dynamic: true})).setColor('RANDOM').setTimestamp().setDescription(`**Cezası Bitirildi !**\n**Yetkili:** ${message.author} (\`${message.author.id}\`)\n**Kullanıcı:** ${kullanici.user} (\`${kullanici.user.id}\`)\n**Sebep:** \`${sebep}\` \n**Tarih:** \`${moment(Date.now()).add(10,"hours").format("HH:mm:ss DD MMMM YYYY")}\``));
+message.react('✅')
+
+kullanici.roles.remove(cezalırol)
 message.guild.roles.cache.forEach(async r => {
-const roller = await datab.fetch(`${message.guild.id}.jail.${kullanici.id}.roles.${r.id}` )
+let roller = datab.fetch(`${message.guild.id}.jail.${kullanici.id}.roles.${r.id}` )
 if(roller != r.id)  return ;
 if(roller){kullanici.roles.add(roller)}
 })
   
+  
+}
+  exports.conf = {
+    enabled: true,
+    guildOnly: false,
+    aliases: ['unjail', 'ceza-kaldır'],
+    permLevel: 0,
+}
+
+exports.help = {
+      name: "unjail"  
   
 }
