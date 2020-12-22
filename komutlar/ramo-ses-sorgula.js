@@ -23,10 +23,10 @@ ramo = message.member;
 }
 let ses = ramo.voice.channel;
 if (!ses) {
-message.channel.send(new MessageEmbed().setColor('RED').setAuthor(message.member.displayName, message.author.avatarURL({dynamic: true})).setDescription("**<@"+ramo.id+"> Bir Sesli Kanalda Değil!**"));
+message.channel.send(new MessageEmbed().setColor('0x800d0d').setAuthor(message.member.displayName, message.author.avatarURL({dynamic: true})).setDescription("**<@"+ramo.id+"> Bir Sesli Kanalda Değil!**"));
 }
 if (ses) {
-message.channel.send(new MessageEmbed().setColor('GREEN').setAuthor(message.member.displayName, message.author.avatarURL({dynamic: true})).setDescription(
+message.channel.send(new MessageEmbed().setColor('#7289D').setAuthor(message.member.displayName, message.author.avatarURL({dynamic: true})).setDescription(
 "**<@"+ramo.id+"> İsimli Kişi `"+ses.name+"` İsimli Kanalda!**"
 ));
 }};

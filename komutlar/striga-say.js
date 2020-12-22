@@ -19,7 +19,7 @@ const ses = message.guild.channels.cache.filter(channel => channel.type == "voic
 
 const embed = new MessageEmbed()
 .setTimestamp()
-.setColor('RANDOM')
+.setColor('#7289D')
 .setAuthor(message.guild.name, message.guild.iconURL({ dynamic: true }))
 message.channel.send(embed.setDescription(`**Toplam Üye  ・ ${toplam}
 Aktif Üye ・ ${online}

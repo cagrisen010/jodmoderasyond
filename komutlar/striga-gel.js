@@ -2,12 +2,12 @@ const Discord = require("discord.js");
 
 exports.run = async (client, message, args) => {
 
-  if (!message.member.voice.channel) {
-    return message.reply("Ses kanalında olman lazım!");
-  }
+if (!message.member.voice.channel) {
+return message.reply("Ses kanalında olman lazım!");
+}
 const filter = (reaction, user) => {
-        return ['✅', '❌'].includes(reaction.emoji.name) && user.id === kullanıcı.id;
-    };
+return ['✅', '❌'].includes(reaction.emoji.name) && user.id === kullanıcı.id;
+};
   
 let kullanıcı = message.mentions.members.first()
 if (!kullanıcı) return message.channel.send('Bir Kullanıcı Belirt.');
@@ -20,7 +20,7 @@ const voiceChannel = message.member.voice.channel.id;
 if (!voiceChannel) return;
   
 let log = new Discord.MessageEmbed()
-.setColor("BLUE")
+.setColor("#7289D")
 .setDescription(`${kullanıcı}, ${message.author} \`${message.member.voice.channel.name}\` Odasına Çekmek İstiyor. Kabul ediyormusun ?`)
   
 let mesaj = await message.channel.send(log)
