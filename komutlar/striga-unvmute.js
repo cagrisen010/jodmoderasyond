@@ -39,7 +39,6 @@ let sure = args[1];
 let sebep = args.splice(2).join(" ");
 if(!sure) return message.channel.send(new MessageEmbed().setDescription(`${message.author}, Bir zaman belirtmelisin.`).setAuthor(message.member.displayName, message.author.avatarURL({ dynamic: true })).setColor('0x800d0d').setTimestamp()).then(x => x.delete({timeout: 5000}));
 if(!sebep) return message.channel.send(new MessageEmbed().setDescription(`${message.author}, Bir sebep belirtmelisin.`).setAuthor(message.member.displayName, message.author.avatarURL({ dynamic: true })).setColor('0x800d0d').setTimestamp()).then(x => x.delete({timeout: 5000}));
-if(kullanici.voice.channel) kullanici.voice.setMute(true).catch();
 let zaman1 = args[1]
 .replace("sn", "s")
 .replace("dk", "m")
@@ -51,34 +50,23 @@ var vakit = zaman1
 .replace("s", " saniye")
 .replace("h", " saat")
 .replace("d", " d");    
-db.set(`seslide2.${kullanici.user.id}.${message.guild.id}`, vakit)
-if (!muteler.some(j => j.id == kullanici.id)) {
-kdb.add(`kullanici.${message.author.id}.mute`, 1);
-moment.locale("tr");
-kdb.push(`kullanici.${kullanici.id}.sicil`, {
-Yetkili: message.author.id,
-Sebep: sebep,
-Ceza: "VMUTE",
-Süre: sure,
-Tarih: (`${moment(Date.now()).add(10,"hours").format("HH:mm:ss DD MMMM YYYY")}`) 
-});
 
 
 message.channel.send(new MessageEmbed().setAuthor(message.member.displayName, message.author.avatarURL({dynamic: true})).setColor('0x348f36').setTimestamp().setDescription(`${message.author} tarafından ${kullanici} \`${sebep}\` sebebiyle seste susturuldu.`));
 message.react('✅')
-mutelog.send(new MessageEmbed().setAuthor(message.member.displayName, message.author.avatarURL({dynamic: true})).setColor('RANDOM').setTimestamp().setDescription(`**Sesli Odalarda Susturuldu !**\n**Yetkili:** ${message.author} (\`${message.author.id}\`)\n**Kullanıcı:** ${kullanici.user} (\`${kullanici.user.id}\`)\n**Süre:** \`${zaman1}\`\n**Sebep**: \`${sebep}\` \n**Tarih:** \`${moment(Date.now()).add(10,"hours").format("HH:mm:ss DD MMMM YYYY")}\``));
-setTimeout(async function() {
+mutelog.send(new MessageEmbed().setAuthor(message.member.displayName, message.author.avatarURL({dynamic: true})).setColor('RANDOM').setTimestamp().setDescription(`**Sesli Odalarda Susturulması Kalktı !**\n**Yetkili:** ${message.author} (\`${message.author.id}\`)\n**Kullanıcı:** ${kullanici.user} (\`${kullanici.user.id}\`)\n**Süre:** \`${zaman1}\`\n**Sebep**: \`${sebep}\` \n**Tarih:** \`${moment(Date.now()).add(10,"hours").format("HH:mm:ss DD MMMM YYYY")}\``));
+
 kullanici.voice.setMute(false);  
-mutelog.send(new MessageEmbed().setColor('RANDOM').setAuthor(message.member.displayName, message.author.avatarURL({dynamic: true})).setDescription(`**Sesli Odalarda Susuturlması Kalktı !** \n**Yetkili:** ${message.author} (\`${message.author.id}\`)\n**Kullanıcı:** ${kullanici.user} (\`${kullanici.user.id}\`)\n**Süre:** \`${zaman1}\`\n**Sebep**: \`${sebep}\` \n**Tarih:** \`${moment(Date.now()).add(10,"hours").format("HH:mm:ss DD MMMM YYYY")}\``))}, ms(zaman1));}
-           
-}; 
-exports.conf = {
+mutelog.send(new MessageEmbed().setColor('RANDOM').setAuthor(message.member.displayName, message.author.avatarURL({dynamic: true})).setDescription(`**Sesli Odalarda Susuturlması Kalktı !** \n**Yetkili:** ${message.author} (\`${message.author.id}\`)\n**Kullanıcı:** ${kullanici.user} (\`${kullanici.user.id}\`)\n**Süre:** \`${zaman1}\`\n**Sebep**: \`${sebep}\` \n**Tarih:** \`${moment(Date.now()).add(10,"hours").format("HH:mm:ss DD MMMM YYYY")}\``))
+
+}
+  exports.conf = {
   enabled: true,
   guildOnly: true,
-  aliases: ["vmute", "seslisustur"],
+  aliases: ["vmute", "sesli-sustur-kaldır"],
   permLevel: 0,
 }
 
 exports.help = {
-  name: "vmute"
+  name: "unvmute"
 };
