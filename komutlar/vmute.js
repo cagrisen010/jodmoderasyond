@@ -11,7 +11,7 @@ exports.run = async (client, message, args) => {
 if(!["", ""].some(role => message.member.roles.cache.get(role)) && (!message.member.hasPermission("ADMINISTRATOR"))) 
 return message.channel.send(new MessageEmbed().setDescription(`${message.author} Komutu kullanmak için yetkin bulunmamakta.`).setColor('0x800d0d').setAuthor(message.member.displayName, message.author.avatarURL({ dynamic: true })).setTimestamp()).then(x => x.delete({timeout: 5000}));
   
-const mutelog = message.guild.channels.cache.find(c => c.id === '')
+const mutelog = message.guild.channels.cache.find(c => c.id === '763481961611395081')
   
 let aylartoplam = {
 "01": "Ocak",
@@ -28,17 +28,6 @@ let aylartoplam = {
 "12": "Aralık"};
 let aylar = aylartoplam;
 
-let zaman1 = args[1]
-.replace("sn", "s")
-.replace("dk", "m")
-.replace("sa", "h")
-.replace("gün", "d");
-//
-var vakit = zaman1
-.replace("m", " dakika")
-.replace("s", " saniye")
-.replace("h", " saat")
-.replace("d", " d");  
   
 let kullanici = message.mentions.members.first()  || message.guild.members.cache.get(args[0]);
 if(!kullanici) return message.channel.send(new MessageEmbed().setDescription(`${message.author}, bir kullanıcı etiketle.`).setColor('0x800d0d').setAuthor(message.member.displayName, message.author.avatarURL({ dynamic: true })).setTimestamp()).then(x => x.delete({timeout: 5000}));
@@ -53,6 +42,22 @@ let sebep = args.splice(2).join(" ");
 if(!sure) return message.channel.send(new MessageEmbed().setDescription(`${message.author}, Bir zaman belirtmelisin.`).setAuthor(message.member.displayName, message.author.avatarURL({ dynamic: true })).setColor('0x800d0d').setTimestamp()).then(x => x.delete({timeout: 5000}));
 if(!sebep) return message.channel.send(new MessageEmbed().setDescription(`${message.author}, Bir sebep belirtmelisin.`).setAuthor(message.member.displayName, message.author.avatarURL({ dynamic: true })).setColor('0x800d0d').setTimestamp()).then(x => x.delete({timeout: 5000}));
 if(kullanici.voice.channel) kullanici.voice.setMute(true).catch();
+
+
+  
+let zaman1 = args[1]
+.replace("sn", "s")
+.replace("dk", "m")
+.replace("sa", "h")
+.replace("gün", "d");
+//
+var vakit = zaman1
+.replace("m", " dakika")
+.replace("s", " saniye")
+.replace("h", " saat")
+.replace("d", " d");    
+  
+db.set(`seslide2.${kullanici.user.id}.${message.guild.id}`, vakit)
   
 if (!muteler.some(j => j.id == kullanici.id)) {
 kdb.add(`kullanici.${message.author.id}.mute`, 1);
@@ -68,18 +73,22 @@ Tarih: (`${moment(Date.now()).add(10,"hours").format("HH:mm:ss DD MMMM YYYY")}`)
 
 message.channel.send(new MessageEmbed().setAuthor(message.member.displayName, message.author.avatarURL({dynamic: true})).setColor('0x348f36').setTimestamp().setDescription(`${message.author} tarafından ${kullanici} \`${sebep}\` sebebiyle seste susturuldu.`));
  
-client.channels.cache.get(mutelog).send(new MessageEmbed().setAuthor(message.member.displayName, message.author.avatarURL({dynamic: true})).setColor('RANDOM').setTimestamp().setDescription(`**Yetkili:** ${message.author} (\`${message.author.id}\`)\n**Kullanıcı:** ${kullanici.user} (\`${kullanici.user.id}\`)\n**Süre:** \`${zaman1}\`\n**Sebep**: \`${sebep}\` \n**Tarih:** \`${moment(Date.now()).add(10,"hours").format("HH:mm:ss DD MMMM YYYY")}\``));
+mutelog.send(new MessageEmbed().setAuthor(message.member.displayName, message.author.avatarURL({dynamic: true})).setColor('RANDOM').setTimestamp().setDescription(`**Yetkili:** ${message.author} (\`${message.author.id}\`)\n**Kullanıcı:** ${kullanici.user} (\`${kullanici.user.id}\`)\n**Süre:** \`${zaman1}\`\n**Sebep**: \`${sebep}\` \n**Tarih:** \`${moment(Date.now()).add(10,"hours").format("HH:mm:ss DD MMMM YYYY")}\``));
+if(mention.voice.channel) {
+db.delete(`seslide2.${kullanici.user.id}.${message.guild.id}`)
   
-}
+kullanici.voice.setMute(false);  
+mutelog.send(new MessageEmbed().setColor('RANDOM').setAuthor(message.member.displayName, message.author.avatarURL({dynamic: true})).setDescription(`**Yetkili:** ${message.author} (\`${message.author.id}\`)\n**Kullanıcı:** ${kullanici.user} (\`${kullanici.user.id}\`)\n**Süre:** \`${zaman1}\`\n**Sebep**: \`${sebep}\` \n**Tarih:** \`${moment(Date.now()).add(10,"hours").format("HH:mm:ss DD MMMM YYYY")}\``)), ms(zaman1);
 
+}
 exports.conf = {
   enabled: true,
   guildOnly: true,
-  aliases: ["vmute", ''],
+  aliases: ["vmute", "seslisustur"],
   permLevel: 0,
-  name: "unmute"
 }
 
 exports.help = {
-  name: "unmute"
+  name: "vmute"
 };
+}
