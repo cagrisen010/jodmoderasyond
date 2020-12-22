@@ -336,3 +336,27 @@ client.on("messageUpdate", (oldMessage, newMessage) => {
 
 
 //--------------------------------------------------------------------------------------\\
+
+
+//--------------------------------------------------------------------------------------\\
+
+client.on("message", msg => {
+ if(!db.has(`reklam_${msg.guild.id}`)) return;
+        const reklam = [".com", ".net", ".xyz", ".tk", ".pw", ".io", ".me", ".gg", "www.", "https", "http", ".gl", ".org", ".com.tr", ".biz", "net", ".rf.gd", ".az", ".party", "discord.gg",];
+        if (reklam.some(word => msg.content.includes(word))) {
+          try {
+            if (!msg.member.hasPermission("BAN_MEMBERS")) {
+                  msg.delete();
+                    return msg.reply('**Bu Sunucuda** `Reklam Engelle`** Aktif Reklam Yapmana İzin Vermem İzin Vermem ? !**').then(msg => msg.delete(3000));
+   
+ 
+  msg.delete(3000);                              
+ 
+            }              
+          } catch(err) {
+            console.log(err);
+          }
+        }
+    });
+
+//--------------------------------------------------------------------------------------\\
