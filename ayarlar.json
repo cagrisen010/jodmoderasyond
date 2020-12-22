@@ -4,14 +4,16 @@
   "token" : "NzY3NzMyNTE3MjAwNDYxODg0.X42Mnw.mZundfNol4xSAe3LMPUzaEO2AE4",
   
   
-  "BanYetkilisi": "",
+  "BanYetkilisi": ["", ""],
   "BanLogKanalı": "",
   
-  "JailYetkilisi": "",
+  "JailYetkilisi": ["", ""],
   "JailCezalıRol": "",
   "JailLogKanalı": "",
   
-  "MuteYetkilisi": "",
-  "MuteliRol": ""
+  "MuteYetkilisi": ["", ""],
+  "MuteliRol": "",
+  "MuteLogKanalı": ""
+  
   
 }
