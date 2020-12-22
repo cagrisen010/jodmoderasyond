@@ -34,13 +34,13 @@ errors: ['time']
 const reaction = collected.first();
 if (reaction.emoji.name === '✅') {
 let kabul = new Discord.MessageEmbed()
-.setColor("GREEN")
+.setColor("0x348f36")
 .setDescription(`${kullanıcı} Odaya Çekilme Teklifini Onayladı`)
 message.channel.send(kabul)
 kullanıcı.voice.setChannel(message.member.voice.channel.id)
 } else {
 let striga = new Discord.MessageEmbed()
-.setColor("RED")
+.setColor("0x800d0d")
 .setDescription(`${kullanıcı} Odaya Çekilme Teklifini Reddetti`)
 message.channel.send(striga)
 }

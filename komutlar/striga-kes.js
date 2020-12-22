@@ -24,4 +24,4 @@ exports.help = {
 name: "kes" 
 }
 
-//sadxmamy
+//code creator: sadxmamy

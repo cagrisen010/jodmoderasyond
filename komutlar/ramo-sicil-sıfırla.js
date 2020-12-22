@@ -15,12 +15,12 @@ if(!member) return message.channel.send(new MessageEmbed().setDescription(`${mes
 
 if (!member) {
 let sicil = kdb.delete(`kullanici.${member.id}.sicil`) || [];
-message.channel.send(new MessageEmbed().setColor('GREEN').setDescription(`${message.author} Sana Ait Sicil Verilerini Sildim!`))
+message.channel.send(new MessageEmbed().setColor('0x348f36').setDescription(`${message.author} Sana Ait Sicil Verilerini Sildim!`))
 }
   
 if(member) {
 let sicil = kdb.delete(`kullanici.${member.id}.sicil`) || [];
-message.channel.send(new MessageEmbed().setColor('GREEN').setDescription(`${member} Kullanıcısına Ait Sicil Verilerini Sildim!`))
+message.channel.send(new MessageEmbed().setColor('0x348f36').setDescription(`${member} Kullanıcısına Ait Sicil Verilerini Sildim!`))
 
 };
   
