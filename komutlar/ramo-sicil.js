@@ -35,5 +35,5 @@ module.exports.conf = {
 };
 
 module.exports.help = {
-    name: "s",
+    name: "geçmiş",
 };
