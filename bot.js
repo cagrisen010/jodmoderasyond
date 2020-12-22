@@ -162,3 +162,16 @@ client.on("message" , async msg => {
   }
   
 });
+
+
+client.on('message', async message => {
+let aktif = await db.fetch(`reklamengelramo_${message.channel.id}`)
+let reklamlar = ["discord.app", "discord.gg" ,"discordapp","discordgg", ".com", ".net", ".xyz", ".tk", ".pw", ".io", ".me", ".gg", "www.", "https", "http", ".gl", ".org", ".com.tr", ".biz", ".party", ".rf.gd", ".az", ".cf", ".me", ".in"]
+let kelimeler = message.content.slice(" ").split(/ +/g)
+if (reklamlar.some(ramp => message.content.toLowerCase().includes(ramp))) {
+if (message.member.hasPermission("BAN_MEMBERS")) return;
+message.delete()
+message.channel.send(new Discord.MessageEmebd().setColor('RED').setDescription('**Link Atmak Yasak Bunu Bilmiyormusun!**')).then(m => m.delete({timeout: 7000}))
+}
+});
+

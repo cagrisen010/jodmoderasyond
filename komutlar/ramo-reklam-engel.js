@@ -1,6 +1,6 @@
 const { MessageEmbed } = require('discord.js');
 const db = require('quick.db');
-const ayarlar = require('./ayarlar.json');
+const ayarlar = require('../ayarlar.json');
 const prefix = ayarlar.prefix
 exports.run = async (client, message, args) => {
    if(!["", ""].some(role => message.member.roles.cache.get(role)) && (!message.member.hasPermission("ADMINISTRATOR"))) 
@@ -18,6 +18,19 @@ message.channel.send(new MessageEmbed().setAuthor(message.member.displayName, me
 }
 if (kanall == 'kapat') {
 let açık = await db.fetch(`reklamengelramo_${kanal.id}`)
-if (!açık) return message.channel.send(new MessageEmbed().setAuthor(message.member.displayName, message.author.avatarURL({dynamic: true})).setTimestamp().setColor('0x800d0d').setDescription(`Reklam Engel Sistemi Zaten Aktif!`))
+if (!açık) return message.channel.send(new MessageEmbed().setAuthor(message.member.displayName, message.author.avatarURL({dynamic: true})).setTimestamp().setColor('0x800d0d').setDescription(`Reklam Engel Sistemi Zaten Aktif Değil!`))
+db.delete(`reklamengelramo_${kanal.id}`)
+message.channel.send(new MessageEmbed().setAuthor(message.member.displayName, message.author.avatarURL({dynamic: true})).setTimestamp().setColor('0x348f36').setDescription(`Reklam Engel Sistemi Artık Aktif Değil !`))
 }
+}
+exports.conf = {
+  enabled: false,
+  guildOnly: false,
+  aliases: ['reklamengel','reklam-engelleme'],
+  permLevel: 3
+};
+exports.help = {
+  name: 'reklam-engel',
+  description: 'reklam engellemeyi açar',
+  usage: 'Code-WENZY'
 }
