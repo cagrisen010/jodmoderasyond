@@ -30,10 +30,10 @@ if(!kisi) return message.channel.send(new MessageEmbed().setDescription(`${messa
 message.guild.members.unban(kisi.id)
 message.channel.send(new MessageEmbed().setDescription(`${message.author} tarafından ${kisi} adlı kullanıcının sunucu yasağı kaldırıldı.`).setColor('0x348f36').setAuthor(message.member.displayName, message.author.avatarURL({ dynamic:true }))).then(x => x.delete({ timeout: 5000}))
   
-  
-client.channels.cache.get('763481961611395081').send(new MessageEmbed().setColor('0x348f36').setAuthor(message.member.displayName, message.authhor.avatarURL({ dynami })).setTimestamp().setDescription(`**Kaldıran Yetkili:** ${message.author} (\`${message.author.id}\`) \n**Banı Kaldırılan Üye:** ${kisi.tag} (\`${kisi.id}\`) \n**Ban Kaldırma Tarihi:** \`\`${moment(Date.now()).add(10,"hours").format("HH:mm:ss DD MMMM YYYY")}\`\``));
+message.react('✅')
+client.channels.cache.get('763481961611395081').send(new MessageEmbed().setColor('0x348f36').setAuthor(message.member.displayName, message.author.avatarURL({ dynamic: true })).setTimestamp().setDescription(`**Sunucudan Yasağı Kaldırıldı !**\n**Kaldıran Yetkili:** ${message.author} (\`${message.author.id}\`) \n**Banı Kaldırılan Üye:** ${kisi} (\`${kisi.id}\`) \n**Ban Kaldırma Tarihi:** \`${moment(Date.now()).add(10,"hours").format("HH:mm:ss DD MMMM YYYY")}\` `));
 
-
+}
   exports.conf = {
   enabled: true,
   guildOnly: true,

@@ -15,6 +15,7 @@ let sicil = kdb.get(`kullanici.${uye.id}.sicil`) || [];
 moment.locale("tr");
 sicil = sicil.reverse();
 let sicilPanel = sicil.length > 0 ? sicil.map((value, index) => `\`${index + 1}.\` [**${value.Ceza}**] \`${value.Tarih}\` tarihinde **${value.Sebep}** sebebinden dolayı \`${value.Süre}\` süresince ${message.guild.members.cache.has(value.Yetkili) ? message.guild.members.cache.get(value.Yetkili) : value.Yetkili} \`cezalandırıldı.\` `).join("\n\n") : "Bu Kullanıcının Sicili Temiz!";
+message.react('✅')
 message.channel.send(new MessageEmbed()
 .setColor("RED")
 .setAuthor(message.member.displayName, message.author.avatarURL({dynamic: true}))
