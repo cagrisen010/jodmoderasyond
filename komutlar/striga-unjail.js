@@ -8,8 +8,8 @@ exports.run = async (client, message, args) => {
 if(!["YETKİLİ ROL ID"].some(role => message.member.roles.cache.get(role)) && (!message.member.hasPermission("ADMINISTRATOR"))) 
 return message.channel.send(new MessageEmbed().setDescription(`${message.author} Komutu kullanmak için yetkin bulunmamakta.`).setColor('0x800d0d').setAuthor(message.member.displayName, message.author.avatarURL({ dynamic: true })).setTimestamp()).then(x => x.delete({timeout: 5000}));
   
-const cezalırol = '791292349707714580'//Jail Rol 
-const jaillog = message.guild.channels.cache.find(c => c.id === '791291545038225429')//Jail Log
+const cezalırol = ''//Jail Rol 
+const jaillog = message.guild.channels.cache.find(c => c.id === '')//Jail Log
 
 //-------------------------------------------------------------------------------\\
 

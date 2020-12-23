@@ -5,7 +5,7 @@ module.exports.run = async (client, message, args) => {
 if(!["YETKILI ROL ID"].some(role => message.member.roles.cache.get(role)) && (!message.member.hasPermission("ADMINISTRATOR"))) 
 return message.channel.send(new Discord.MessageEmbed().setDescription(`${message.author} Komutu kullanmak için yetkin bulunmamakta.`).setColor('0x800d0d').setAuthor(message.member.displayName, message.author.avatarURL()({ dynamic: true })).setTimestamp()).then(x => x.delete({timeout: 5000}));
 
-let guild = "763481961146482719"; // SUNUCU ID
+let guild = "SUNUCU ID"; // SUNUCU ID
 const voiceChannels = message.guild.channels.cache.filter(c => c.type === 'voice');
 let count = 0;
 for (const [id, voiceChannel] of voiceChannels) count += voiceChannel.members.size;
@@ -16,16 +16,16 @@ var üs = üyesayısı.match(/([0-9])/g)
 if(üs) {
 üyesayısı = üyesayısı.replace(/([0-9])/g, d => {
 return {
-'0': `<a:sifir:791085966797701170>`,
-'1': `<a:bir:791085959495155752>`,
-'2': `<a:iki:791085966005633044>`,
-'3': `<a:uc:791085966273282098>`,
-'4': `<a:dort:791085966093844480>`,                       
-'5': `<a:bes:791085956019126272>`,
-'6': `<a:alti:791085942072803389>`,
-'7': `<a:yedi:791085965686210621>`,
-'8': `<a:sekiz:791085967003877396>`,
-'9': `<a:dokuz:791085968127033374>`}[d];})}
+'0': ``,
+'1': ``,
+'2': ``,
+'3': ``,
+'4': ``,                       
+'5': ``,
+'6': ``,
+'7': ``,
+'8': ``,
+'9': ``}[d];})}
   
   
 var sessayı = count.toString().replace(/ /g, "    ")
@@ -34,17 +34,16 @@ sessayı = sessayı.replace(/([a-zA-Z])/g, "bilinmiyor").toLowerCase()
 if(üs2) {
 sessayı = sessayı.replace(/([0-9])/g, d => {
 return {
-'0': `<a:sifir:791085966797701170>`,
-'1': `<a:bir:791085959495155752>`,
-'2': `<a:iki:791085966005633044>`,
-'3': `<a:uc:791085966273282098>`,
-'4': `<a:dort:791085966093844480>`,                       
-'5': `<a:bes:791085956019126272>`,
-'6': `<a:alti:791085942072803389>`,
-'7': `<a:yedi:791085965686210621>`,
-'8': `<a:sekiz:791085967003877396>`,
-'9': `<a:dokuz:791085968127033374>`}[d];})}
-
+'0': ``,
+'1': ``,
+'2': ``,
+'3': ``,
+'4': ``,                       
+'5': ``,
+'6': ``,
+'7': ``,
+'8': ``,
+'9': ``}[d];})}
 
 var taglılar = 0;
 let tag = "TAG";
@@ -58,16 +57,16 @@ taglılar = taglılar.replace(/([a-zA-Z])/g, "bilinmiyor").toLowerCase()
 if(üs3) {
 taglılar = taglılar.replace(/([0-9])/g, d => {
 return {
-'0': `<a:sifir:791085966797701170>`,
-'1': `<a:bir:791085959495155752>`,
-'2': `<a:iki:791085966005633044>`,
-'3': `<a:uc:791085966273282098>`,
-'4': `<a:dort:791085966093844480>`,                       
-'5': `<a:bes:791085956019126272>`,
-'6': `<a:alti:791085942072803389>`,
-'7': `<a:yedi:791085965686210621>`,
-'8': `<a:sekiz:791085967003877396>`,
-'9': `<a:dokuz:791085968127033374>`}[d];})}
+'0': ``,
+'1': ``,
+'2': ``,
+'3': ``,
+'4': ``,                       
+'5': ``,
+'6': ``,
+'7': ``,
+'8': ``,
+'9': ``}[d];})}
 
   
   
@@ -78,50 +77,49 @@ cevirimici = cevirimici.replace(/([a-zA-Z])/g, "bilinmiyor").toLowerCase()
 if(üs4) {
 cevirimici = cevirimici.replace(/([0-9])/g, d => {
 return {
-'0': `<a:sifir:791085966797701170>`,
-'1': `<a:bir:791085959495155752>`,
-'2': `<a:iki:791085966005633044>`,
-'3': `<a:uc:791085966273282098>`,
-'4': `<a:dort:791085966093844480>`,                       
-'5': `<a:bes:791085956019126272>`,
-'6': `<a:alti:791085942072803389>`,
-'7': `<a:yedi:791085965686210621>`,
-'8': `<a:sekiz:791085967003877396>`,
-'9': `<a:dokuz:791085968127033374>`}[d];})}
+'0': ``,
+'1': ``,
+'2': ``,
+'3': ``,
+'4': ``,                       
+'5': ``,
+'6': ``,
+'7': ``,
+'8': ``,
+'9': ``}[d];})}
 
   
   
   
-var booster = message.guild.roles.cache.get("791292350533468180").members.size
+var booster = message.guild.roles.cache.get("BOOSTER ROL ID").members.size
 var booster = booster.toString().replace(/ /g, "    ")
 var üs5 = booster.match(/([0-9])/g)
 booster = booster.replace(/([a-zA-Z])/g, "bilinmiyor").toLowerCase()
 if(üs5) {
 booster = booster.replace(/([0-9])/g, d => {
 return {
-'0': `<a:sifir:791085966797701170>`,
-'1': `<a:bir:791085959495155752>`,
-'2': `<a:iki:791085966005633044>`,
-'3': `<a:uc:791085966273282098>`,
-'4': `<a:dort:791085966093844480>`,                       
-'5': `<a:bes:791085956019126272>`,
-'6': `<a:alti:791085942072803389>`,
-'7': `<a:yedi:791085965686210621>`,
-'8': `<a:sekiz:791085967003877396>`,
-'9': `<a:dokuz:791085968127033374>`}[d];})}
+'0': ``,
+'1': ``,
+'2': ``,
+'3': ``,
+'4': ``,                       
+'5': ``,
+'6': ``,
+'7': ``,
+'8': ``,
+'9': ``}[d];})}
 
 
   
-const emoji1 = client.emojis.cache.get("791087314699943957")
 const embed1 = new Discord.MessageEmbed()
 .setColor('0x0088ff')
 .setAuthor(message.guild.name, message.guild.iconURL({ dynamic: true }))
  .setDescription(`
- ${emoji1} **Sunucuda Toplam** ${üyesayısı} **Üye bulunmakta.** 
- ${emoji1} **Sunucuda Toplam** ${cevirimici} **Üye Çevrimiçi.** 
- ${emoji1} **Ses Kanallarında** ${sessayı} **Üye Sohbet Ediyor.**
- ${emoji1} **Tagımızda Toplam ** ${taglılar} **Üye Bulunmakta.**
- ${emoji1} **Sunucuda Toplam ${booster} Booster Üye Bulunmakta.**`)
+**Sunucuda Toplam** ${üyesayısı} **Üye bulunmakta.** 
+**Sunucuda Toplam** ${cevirimici} **Üye Çevrimiçi.** 
+**Ses Kanallarında** ${sessayı} **Üye Sohbet Ediyor.**
+**Tagımızda Toplam ** ${taglılar} **Üye Bulunmakta.**
+**Sunucuda Toplam ${booster} Booster Üye Bulunmakta.**`)
 
 msg.channel.send(embed1);
   

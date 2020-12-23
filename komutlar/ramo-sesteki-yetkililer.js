@@ -11,7 +11,7 @@ return message.channel.send(new Discord.MessageEmbed().setDescription(`${message
   
   let ramo = "**Sesli Kanalda Olan Yetkililer:**\n";
   let ramo2 = "**Sesli Kanalda Olmayan Yetkililer:**\n";
-  message.guild.roles.cache.get("763481961518858267").members.map(r => {
+  message.guild.roles.cache.get("yetkili rolü").members.map(r => {
     ramo += r.voice.channel ? "•  <@" + r.user.id + ">\n" : "";
     ramo2 += !r.voice.channel ? "•  <@" + r.user.id + ">\n" : "";
   });
