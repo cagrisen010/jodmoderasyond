@@ -361,3 +361,10 @@ client.on("message", msg => {
     });
 
 //--------------------------------------------------------------------------------------\\
+
+client.on('messageDelete', message => {
+  const data = require("quick.db")
+  data.set(`snipe.mesaj.${message.guild.id}`, message.content)
+  data.set(`snipe.id.${message.guild.id}`, message.author.id)
+
+})
