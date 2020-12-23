@@ -5,10 +5,10 @@ exports.run = async (client, message, args) => {
 
 //-------------------------------------------------------------------------------\\  
   
-if(![""].some(role => message.member.roles.cache.get(role)) && (!message.member.hasPermission("ADMINISTRATOR"))) 
+if(!["ROL ID"].some(role => message.member.roles.cache.get(role)) && (!message.member.hasPermission("ADMINISTRATOR"))) 
 return message.channel.send(new MessageEmbed().setDescription(`${message.author} Komutu kullanmak için yetkin bulunmamakta.`).setColor('0x800d0d').setAuthor(message.member.displayName, message.author.avatarURL({ dynamic: true })).setTimestamp()).then(x => x.delete({timeout: 5000}));
 
-const banlog = message.guild.channels.cache.find(c => c.id === '763481961611395081')
+const banlog = message.guild.channels.cache.find(c => c.id === '791291526797983744')
 
 //-------------------------------------------------------------------------------\\
 
@@ -37,7 +37,7 @@ message.guild.members.unban(kisi.id)
 message.channel.send(new MessageEmbed().setDescription(`${message.author} tarafından ${kisi} adlı kullanıcının sunucu yasağı kaldırıldı.`).setColor('0x348f36').setAuthor(message.member.displayName, message.author.avatarURL({ dynamic:true }))).then(x => x.delete({ timeout: 5000}))
   
 message.react('✅')
-client.channels.cache.get('763481961611395081').send(new MessageEmbed().setColor('0x348f36').setAuthor(message.member.displayName, message.author.avatarURL({ dynamic: true })).setTimestamp().setDescription(`**Sunucudan Yasağı Kaldırıldı !**\n**Kaldıran Yetkili:** ${message.author} (\`${message.author.id}\`) \n**Banı Kaldırılan Üye:** ${kisi} (\`${kisi.id}\`) \n**Ban Kaldırma Tarihi:** \`${moment(Date.now()).add(10,"hours").format("HH:mm:ss DD MMMM YYYY")}\` `));
+banlog.send(new MessageEmbed().setColor('0x348f36').setAuthor(message.member.displayName, message.author.avatarURL({ dynamic: true })).setTimestamp().setDescription(`**Sunucudan Yasağı Kaldırıldı !**\n**Kaldıran Yetkili:** ${message.author} (\`${message.author.id}\`) \n**Banı Kaldırılan Üye:** ${kisi} (\`${kisi.id}\`) \n**Ban Kaldırma Tarihi:** \`${moment(Date.now()).add(10,"hours").format("HH:mm:ss DD MMMM YYYY")}\` `));
 
 }
   exports.conf = {

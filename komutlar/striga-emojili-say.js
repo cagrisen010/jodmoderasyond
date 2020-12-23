@@ -5,7 +5,7 @@ module.exports.run = async (client, message, args) => {
 if(!["YETKILI ROL ID"].some(role => message.member.roles.cache.get(role)) && (!message.member.hasPermission("ADMINISTRATOR"))) 
 return message.channel.send(new Discord.MessageEmbed().setDescription(`${message.author} Komutu kullanmak için yetkin bulunmamakta.`).setColor('0x800d0d').setAuthor(message.member.displayName, message.author.avatarURL()({ dynamic: true })).setTimestamp()).then(x => x.delete({timeout: 5000}));
 
-let guild = "763481961146482719";
+let guild = "763481961146482719"; // SUNUCU ID
 const voiceChannels = message.guild.channels.cache.filter(c => c.type === 'voice');
 let count = 0;
 for (const [id, voiceChannel] of voiceChannels) count += voiceChannel.members.size;
@@ -92,7 +92,7 @@ return {
   
   
   
-var booster = message.guild.roles.cache.get("763481961611395078").members.size
+var booster = message.guild.roles.cache.get("791292350533468180").members.size
 var booster = booster.toString().replace(/ /g, "    ")
 var üs5 = booster.match(/([0-9])/g)
 booster = booster.replace(/([a-zA-Z])/g, "bilinmiyor").toLowerCase()
