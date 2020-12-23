@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 const { oneLine, stripIndents } = require('common-tags');
 module.exports.run = async (client, message, args) => {
 
-  if (!message.member.roles.cache.has("763481961565782050") && !message.member.hasPermission("MANAGE_MESSAGES") ) 
+if (!message.member.roles.cache.has("763481961565782050") && !message.member.hasPermission("MANAGE_MESSAGES") ) 
 return message.channel.send(new Discord.MessageEmbed().setDescription(`${message.author} Komutu kullanmak için yetkin bulunmamakta.`).setColor('0x800d0d').setAuthor(message.member.displayName, message.author.avatarURL()({ dynamic: true })).setTimestamp()).then(x => x.delete({timeout: 5000}));
 
 let guild = "763481961146482719";
@@ -47,7 +47,7 @@ return {
 
 
 var taglılar = 0;
-let tag = "Emirhan";
+let tag = "TAG";
 message.guild.members.cache.forEach(member => {
 if(member.user.username.includes(tag)) {
 taglılar = taglılar+1}})
@@ -72,11 +72,11 @@ return {
   
   
   
-var onlayn = message.guild.members.cache.filter(m => m.presence.status !== "offline").size.toString().replace(/ /g, "    ")
-var üs4= onlayn.match(/([0-9])/g)
-onlayn = onlayn.replace(/([a-zA-Z])/g, "bilinmiyor").toLowerCase()
+var cevirimici = message.guild.members.cache.filter(m => m.presence.status !== "offline").size.toString().replace(/ /g, "    ")
+var üs4= cevirimici.match(/([0-9])/g)
+cevirimici = cevirimici.replace(/([a-zA-Z])/g, "bilinmiyor").toLowerCase()
 if(üs4) {
-onlayn = onlayn.replace(/([0-9])/g, d => {
+cevirimici = cevirimici.replace(/([0-9])/g, d => {
 return {
 '0': `<a:sifir:791085966797701170>`,
 '1': `<a:bir:791085959495155752>`,
@@ -89,7 +89,10 @@ return {
 '8': `<a:sekiz:791085967003877396>`,
 '9': `<a:dokuz:791085968127033374>`}[d];})}
 
-var booster = message.guild.roles.cache.get("BOOSTER ROL ID").members.size
+  
+  
+  
+var booster = message.guild.roles.cache.get("763481961611395078").members.size
 var booster = booster.toString().replace(/ /g, "    ")
 var üs5 = booster.match(/([0-9])/g)
 booster = booster.replace(/([a-zA-Z])/g, "bilinmiyor").toLowerCase()
@@ -113,12 +116,12 @@ const emoji1 = client.emojis.cache.get("791087314699943957")
 const embed1 = new Discord.MessageEmbed()
 .setColor('0x0088ff')
 .setAuthor(message.guild.name, message.guild.iconURL({ dynamic: true }))
-.setDescription(`
-${emoji1} **Toplam Üye:** ・ ${üyesayısı}  
-${emoji1} **Aktif Üye:** ・ ${onlayn} 
-${emoji1} **Sesteki Üye:** ・ ${sessayı}
-${emoji1} **Taglı Üye:** ・ ${taglılar}
-${emoji1} **Booster Üye:** ・ ${booster}`)
+ .setDescription(`
+ ${emoji1} **Sunucuda Toplam** ${üyesayısı} **Üye bulunmakta.** 
+ ${emoji1} **Sunucuda Toplam** ${cevirimici} **Üye Çevrimiçi.** 
+ ${emoji1} **Ses Kanallarında** ${sessayı} **Üye Sohbet Ediyor.**
+ ${emoji1} **Tagımızda Toplam ** ${taglılar} **Üye Bulunmakta.**
+ ${emoji1} **Sunucuda Toplam ${booster} Booster Üye Bulunmakta.**`)
 
 msg.channel.send(embed1);
   
