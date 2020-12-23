@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 const { oneLine, stripIndents } = require('common-tags');
 module.exports.run = async (client, message, args) => {
 
-if (!message.member.roles.cache.has("763481961565782050") && !message.member.hasPermission("MANAGE_MESSAGES") ) 
+if(!["YETKILI ROL ID"].some(role => message.member.roles.cache.get(role)) && (!message.member.hasPermission("ADMINISTRATOR"))) 
 return message.channel.send(new Discord.MessageEmbed().setDescription(`${message.author} Komutu kullanmak için yetkin bulunmamakta.`).setColor('0x800d0d').setAuthor(message.member.displayName, message.author.avatarURL()({ dynamic: true })).setTimestamp()).then(x => x.delete({timeout: 5000}));
 
 let guild = "763481961146482719";
