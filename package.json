@@ -24,7 +24,8 @@
     "path": "^0.12.7",
     "quick.db": "^7.1.2",
     "snekfetch": "^4.0.4",
-    "common-tags": "^1.8.0"
+    "common-tags": "^1.8.0",
+    "luxon": "^1.25.0"
   },
   "engines": {
     "node": "12.x"
