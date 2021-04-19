@@ -123,32 +123,32 @@ client.login(ayarlar.token);
 
 client.on("message", message => {
     if(message.content.toLowerCase() == "!tag") 
-    return message.channel.send(`TAG`)
+    return message.channel.send(`TAGIMIZ YOK`)
 });
 
 client.on("message", message => {
     if(message.content.toLowerCase() == "-tag") 
-    return message.channel.send(`TAG`)
+    return message.channel.send(`TAGIMIZ YOK`)
 });
 
 client.on("message", message => {
     if(message.content.toLowerCase() == "u!tag") 
-    return message.channel.send(`TAG`)
+    return message.channel.send(`TAGIMIZ YOK`)
 });
 
 client.on("message", message => {
     if(message.content.toLowerCase() == "u.tag") 
-    return message.channel.send(`TAG`)
+    return message.channel.send(`TAGIMIZ YOK`)
 });
 
 client.on("message", message => {
     if(message.content.toLowerCase() == "u-tag") 
-    return message.channel.send(`TAG`)
+    return message.channel.send(`TAGIMIZ YOK`)
 });
 
 client.on("message", message => {
     if(message.content.toLowerCase() == ".tag") 
-    return message.channel.send(`TAG`)
+    return message.channel.send(`TAGIMIZ YOK`)
 });
 
 //------------------------------------------------------------------------------------------------------------\\
@@ -211,7 +211,7 @@ client.on("message" , async msg => {
  }
   if(msg.author.id === kisi){
 
-       msg.channel.send(new Discord.MessageEmbed().setColor('BLACK').setDescription(`<@${kisi}> Başarıyla Afk Modundan Çıktınız`))
+       msg.channel.send(new Discord.MessageEmbed().setColor('BLACK').setDescription(`<@${kisi}> Başarıyla Afk Modundan Çıktınız birdaha milleti bekletme :-)`))
    db.delete(`afkSebep_${msg.author.id}_${msg.guild.id}`)
    db.delete(`afkid_${msg.author.id}_${msg.guild.id}`)
    db.delete(`afkAd_${msg.author.id}_${msg.guild.id}`)
@@ -225,7 +225,7 @@ client.on("message" , async msg => {
 //--------------------------------------------------------------------------------------\\
 
 client.on('guildMemberAdd', async(member) => {
-let rol = member.guild.roles.cache.find(r => r.name === "CEZALI ROLÜNÜN ADI NEYSE YAZ");
+let rol = member.guild.roles.cache.find(r => r.name === "muted");
 let cezalımı = db.fetch(`cezali_${member.guild.id + member.id}`)
 let sürejail = db.fetch(`süreJail_${member.id + member.guild.id}`)
 if (!cezalımı) return;
@@ -237,7 +237,7 @@ member.send("Cezalıyken Sunucudan Çıktığın için Yeniden Cezalı Rolü Ver
     // msg.channel.send(`<@${user.id}> Muten açıldı.`)
 db.delete(`cezali_${member.guild.id + member.id}`)
     member.send(`<@${member.id}> Cezan açıldı.`)
-    member.roles.remove('cezalı rol id');
+    member.roles.remove('832196664269209623');
   }, ms(sürejail));
 }
 })
@@ -245,7 +245,7 @@ db.delete(`cezali_${member.guild.id + member.id}`)
 //--------------------------------------------------------------------------------------\\
 
 client.on('guildMemberAdd', async(member) => {
-let mute = member.guild.roles.cache.find(r => r.name === "MUTELİ ROLÜNÜN ADI NEYSE YAZ");
+let mute = member.guild.roles.cache.find(r => r.name === "muted");
 let mutelimi = db.fetch(`muteli_${member.guild.id + member.id}`)
 let süre = db.fetch(`süre_${member.id + member.guild.id}`)
 if (!mutelimi) return;
@@ -257,7 +257,7 @@ member.send("Muteliyken Sunucudan Çıktığın için Yeniden Mutelendin!")
     // msg.channel.send(`<@${user.id}> Muten açıldı.`)
 db.delete(`muteli_${member.guild.id + member.id}`)
     member.send(`<@${member.id}> Muten açıldı.`)
-    member.roles.remove('muteli rol id');
+    member.roles.remove('833618828947619861');
   }, ms(süre));
 }
 })
