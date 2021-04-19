@@ -169,10 +169,10 @@ client.on("message", message => {
 });
 
 client.on("message", message => {
-    if(message.content.toLowerCase() == "striga") 
+    if(message.content.toLowerCase() == "Scream4UrLife") 
     return message.channel.send(`Striga adamdır :heart: :heart:`)
-});
 
+});
 
 client.on("message", message => {
     if(message.content.toLowerCase() == "mrb") 
