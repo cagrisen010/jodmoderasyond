@@ -173,10 +173,6 @@ client.on("message", message => {
     return message.channel.send(`Striga adamdır :heart: :heart:`)
 });
 
-client.on("message", message => {
-    if(message.content.toLowerCase() == "s.a") 
-    return message.channel.send(`${message.author}, Aleyküm Selam.`)
-});
 
 client.on("message", message => {
     if(message.content.toLowerCase() == "mrb") 
