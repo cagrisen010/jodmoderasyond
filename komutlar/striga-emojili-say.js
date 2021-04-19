@@ -2,10 +2,10 @@ const Discord = require("discord.js");
 const { oneLine, stripIndents } = require('common-tags');
 module.exports.run = async (client, message, args) => {
 
-if(!["YETKILI ROL ID"].some(role => message.member.roles.cache.get(role)) && (!message.member.hasPermission("ADMINISTRATOR"))) 
+if(!["832196664277073946"].some(role => message.member.roles.cache.get(role)) && (!message.member.hasPermission("ADMINISTRATOR"))) 
 return message.channel.send(new Discord.MessageEmbed().setDescription(`${message.author} Komutu kullanmak için yetkin bulunmamakta.`).setColor('0x800d0d').setAuthor(message.member.displayName, message.author.avatarURL()({ dynamic: true })).setTimestamp()).then(x => x.delete({timeout: 5000}));
 
-let guild = "SUNUCU ID"; // SUNUCU ID
+let guild = "832196664269209620"; // SUNUCU ID
 const voiceChannels = message.guild.channels.cache.filter(c => c.type === 'voice');
 let count = 0;
 for (const [id, voiceChannel] of voiceChannels) count += voiceChannel.members.size;
@@ -91,7 +91,7 @@ return {
   
   
   
-var booster = message.guild.roles.cache.get("BOOSTER ROL ID").members.size
+var booster = message.guild.roles.cache.get("832196664277073942").members.size
 var booster = booster.toString().replace(/ /g, "    ")
 var üs5 = booster.match(/([0-9])/g)
 booster = booster.replace(/([a-zA-Z])/g, "bilinmiyor").toLowerCase()
