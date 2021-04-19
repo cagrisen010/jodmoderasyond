@@ -10,7 +10,7 @@ module.exports = client => {
   console.log(`[BOT] | (${client.user.username}) HAZIR KAPTAN STRIGA !
   ‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒`);
   client.user.setStatus("online");
-  client.user.setActivity("STRIGA #CODE", { type: "WATCHING"}); //// TYPE - WATCHING , PLAYING , LISTENING gibi değiştirilebilir.
+  client.user.setActivity("dsc.bio/Scream4UrLife", { type: "PLAYING"}); //// TYPE - WATCHING , PLAYING , LISTENING gibi değiştirilebilir.
   console.log(`ABILERE SELAM STRIGAYLA DEWAM`);
 
 };
