@@ -27,3 +27,4 @@ message.channel.send(embed.setAuthor(message.member.displayName, message.author.
   exports.help = {
   name: 'taglı'
 }
+//Burası Kullanılmayacak!

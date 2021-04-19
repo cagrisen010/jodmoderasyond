@@ -40,5 +40,3 @@ exports.conf = {
 exports.help = {
   name: "kilit" 
 };
-
-//code creator: sadxmamy

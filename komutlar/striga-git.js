@@ -10,7 +10,7 @@ return ['✅', '❌'].includes(reaction.emoji.name) && user.id === kullanıcı.i
 };
   
 let kullanıcı = message.mentions.members.first();
-if (!kullanıcı) return message.channel.send('Bir Kullanıcı Belirt.');
+if (!kullanıcı) return message.channel.send('Bir Kullanıcı Belirt. (Kendini Etiketleme Ama :D)');
 
 let rol = message.mentions.roles.first();
 let member = message.guild.member(kullanıcı);
@@ -40,7 +40,7 @@ message.member.voice.setChannel(kullanıcı.voice.channel.id)
 } else {
 let striga = new Discord.MessageEmbed()
 .setColor("0x800d0d")
-.setDescription(`${kullanıcı} Odaya Gelmeni Onaylamadı.`)
+.setDescription(`Üzülürek Söylüyorum ki ${kullanıcı} Odaya Gelmeni Onaylamadı.`)
 message.channel.send(striga)
 }
 })}
