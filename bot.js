@@ -117,7 +117,7 @@ client.on('error', e => {
     console.log(chalk.bgRed(e.replace(regToken, 'that was redacted')));
 });
 
-client.login(ayarlar.token);
+client.login(process.env.token).then(console.log(`Bot başarıyla giriş yaptı!`)).catch(console.error("Bota giriş yapılırken başarısız olundu tokeni dogru girdigine emin misin ?"));
 
 //------------------------------------------------------------------------------------------------------------\\
 
