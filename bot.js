@@ -356,6 +356,8 @@ client.on("message", msg => {
         }
     });
 
+client.setMaxListeners(30)
+
 //--------------------------------------------------------------------------------------\\
 
 client.on('messageDelete', message => {
@@ -364,3 +366,5 @@ client.on('messageDelete', message => {
   data.set(`snipe.id.${message.guild.id}`, message.author.id)
 
 })
+
+
