@@ -170,7 +170,7 @@ client.on("message", message => {
 
 client.on("message", message => {
     if(message.content.toLowerCase() == "Scream4UrLife") 
-    return message.channel.send(`Striga adamdır :heart: :heart:`)
+    return message.channel.send(`Scream4UrLife adamdır :heart: :heart:`)
 
 });
 
