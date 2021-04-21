@@ -329,6 +329,10 @@ client.on("messageUpdate", (oldMessage, newMessage) => {
         }
     }
     if (!i) return;
+
+
+client.setMaxListeners(30)
+
 });
 
 
@@ -356,7 +360,7 @@ client.on("message", msg => {
         }
     });
 
-client.setMaxListeners(30)
+
 
 //--------------------------------------------------------------------------------------\\
 
