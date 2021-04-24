@@ -10,7 +10,7 @@ module.exports = client => {
   console.log(`[BOT] | (${client.user.username}) Sepultura!
   ‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒`);
   client.user.setStatus("online");
-  client.user.setActivity("Unsullied?", { type: "PLAYING"}); //// TYPE - WATCHING , PLAYING , LISTENING gibi değiştirilebilir.
+  client.user.setActivity("Unsullied ❤️", { type: "PLAYING"}); //// TYPE - WATCHING , PLAYING , LISTENING gibi değiştirilebilir.
   console.log(`Sepultura Her Daim Sikerr`);
 
 };
