@@ -41,7 +41,7 @@ message.member.voice.setChannel(kullanıcı.voice.channel.id)
 let striga = new Discord.MessageEmbed()
 .setColor("0x800d0d")
 .setDescription(`Üzülürek Söylüyorum ki ${kullanıcı} Odaya Gelmeni Onaylamadı.`)
-message.channel.send(striga)
+message.channel.send()
 }
 })}
 

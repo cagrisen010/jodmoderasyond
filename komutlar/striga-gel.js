@@ -42,7 +42,7 @@ kullanıcı.voice.setChannel(message.member.voice.channel.id)
 let striga = new Discord.MessageEmbed()
 .setColor("0x800d0d")
 .setDescription(`${kullanıcı} Odaya Çekilme Teklifini Reddetti`)
-message.channel.send(striga)
+message.channel.send()
 }
 })
 }

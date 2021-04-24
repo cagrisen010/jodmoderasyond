@@ -8,10 +8,10 @@ exports.run = async (client, message, args) => {
   
 //-------------------------------------------------------------------------------\\  
 
-if(!["832196664277073947"].some(role => message.member.roles.cache.get(role)) && (!message.member.hasPermission("ADMINISTRATOR"))) 
+if(!["834128615423737856"].some(role => message.member.roles.cache.get(role)) && (!message.member.hasPermission("ADMINISTRATOR"))) 
 return message.channel.send(new MessageEmbed().setDescription(`${message.author} Komutu kullanmak için yetkin bulunmamakta.`).setColor('0x800d0d').setAuthor(message.member.displayName, message.author.avatarURL({ dynamic: true })).setTimestamp()).then(x => x.delete({timeout: 5000}));
   
-const banlog = message.guild.channels.cache.find(c => c.id === '833618267716583434')//Ban log kanalı  
+const banlog = message.guild.channels.cache.find(c => c.id === '835590351657238538')//Ban log kanalı  
   
 //-------------------------------------------------------------------------------\\
 
@@ -63,7 +63,7 @@ kullanici.ban({reason: sebep}).then(x => message.react('✅')).catch();
                   });
                 };    
 message.channel.send(new MessageEmbed().setDescription(`${message.author} tarafından ${kullanici} \`${sebep}\` Sebebiyle Sunucudan Yasaklandı.`).setAuthor(message.member.displayName, message.author.avatarURL({dynamic: true})).setColor('0x348f36').setTimestamp()) 
-banlog.send(new MessageEmbed().setAuthor(message.member.displayName, message.author.avatarURL({dynamic: true})).setColor('RANDOM').setTimestamp().setDescription(`**Sunucudan Yasaklandı !**\n**Banlayan Yetkili:** ${message.author.id} (\`${message.author.id}\`)\n**Banlanan Üye:** ${kullanici.user.tag} (\`${kullanici.user.id}\`)\n**Tarih:** \`${moment(Date.now()).add(10,"hours").format("HH:mm:ss DD MMMM YYYY")}\` `));
+banlog.send(new MessageEmbed().setAuthor(message.member.displayName, message.author.avatarURL({dynamic: true})).setColor('RANDOM').setTimestamp().setDescription(`:tada: **Sunucudan Yasaklandı !**\n**Banlayan Yetkili:** ${message.author.id} (\`${message.author.id}\`)\n**Banlanan Üye:** ${kullanici.user.tag} (\`${kullanici.user.id}\`)\n**Tarih:** \`${moment(Date.now()).add(10,"hours").format("HH:mm:ss DD MMMM YYYY")}\` `));
 }
 
 exports.conf = {
