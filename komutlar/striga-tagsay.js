@@ -18,8 +18,8 @@ message.channel.send(embed.setAuthor(message.member.displayName, message.author.
 };
 
   exports.conf = {
-  enabled: true,
-  guildOnly: true,
+  enabled: false,
+  guildOnly: false,
   aliases: ["tag-say"],
   permLvl: 0,
 }
