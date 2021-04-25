@@ -7,10 +7,10 @@ var prefix = ayarlar.prefix;
 
 module.exports = client => {
   console.log(`[BOT] | Botun destekçileri ve komutları başarıyla yüklendi, işlemler tamamlandı !`);
-  console.log(`[BOT] | (${client.user.username}) Sepultura!
+  console.log(`[BOT] | (${client.user.username}) Mâqquf?!
   ‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒`);
   client.user.setStatus("online");
   client.user.setActivity("Unsullied ❤️", { type: "PLAYING"}); //// TYPE - WATCHING , PLAYING , LISTENING gibi değiştirilebilir.
-  console.log(`Sepultura Her Daim Sikerr`);
+  console.log(`Mâqquf Her Daim Sikerr`);
 
 };
