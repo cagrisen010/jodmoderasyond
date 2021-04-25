@@ -28,5 +28,5 @@ module.exports.conf = {
 };
 
 module.exports.help = {
-  name: "sesteki-yetkililer"
+  name: "ses-sorgu"
 };
