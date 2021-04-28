@@ -123,32 +123,32 @@ client.login(process.env.token).then(console.log(`Bot başarıyla giriş yaptı!
 
 client.on("message", message => {
     if(message.content.toLowerCase() == "!tag") 
-    return message.channel.send(`TAGIMIZ YOK`)
+    return message.channel.send(`Victoriâ`)
 });
 
 client.on("message", message => {
     if(message.content.toLowerCase() == "-tag") 
-    return message.channel.send(`TAGIMIZ YOK`)
+    return message.channel.send(`Victoriâ`)
 });
 
 client.on("message", message => {
     if(message.content.toLowerCase() == "u!tag") 
-    return message.channel.send(`TAGIMIZ YOK`)
+    return message.channel.send(`Victoriâ`)
 });
 
 client.on("message", message => {
     if(message.content.toLowerCase() == "u.tag") 
-    return message.channel.send(`TAGIMIZ YOK`)
+    return message.channel.send(`Victoriâ`)
 });
 
 client.on("message", message => {
     if(message.content.toLowerCase() == "u-tag") 
-    return message.channel.send(`TAGIMIZ YOK`)
+    return message.channel.send(`Victoriâ`)
 });
 
 client.on("message", message => {
     if(message.content.toLowerCase() == ".tag") 
-    return message.channel.send(`TAGIMIZ YOK`)
+    return message.channel.send(`Victoriâ`)
 });
 
 //------------------------------------------------------------------------------------------------------------\\
@@ -233,7 +233,7 @@ member.send("Cezalıyken Sunucudan Çıktığın için Yeniden Cezalı Rolü Ver
     // msg.channel.send(`<@${user.id}> Muten açıldı.`)
 db.delete(`cezali_${member.guild.id + member.id}`)
     member.send(`<@${member.id}> Cezan açıldı.`)
-    member.roles.remove('832196664269209623');
+    member.roles.remove('836555450405093406');
   }, ms(sürejail));
 }
 })
@@ -253,7 +253,7 @@ member.send("Muteliyken Sunucudan Çıktığın için Yeniden Mutelendin!")
     // msg.channel.send(`<@${user.id}> Muten açıldı.`)
 db.delete(`muteli_${member.guild.id + member.id}`)
     member.send(`<@${member.id}> Muten açıldı.`)
-    member.roles.remove('833618828947619861');
+    member.roles.remove('836555451046297601');
   }, ms(süre));
 }
 })
