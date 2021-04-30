@@ -122,33 +122,33 @@ client.login(process.env.token).then(console.log(`Bot başarıyla giriş yaptı!
 //------------------------------------------------------------------------------------------------------------\\
 
 client.on("message", message => {
-    if(message.content.toLowerCase() == "!tag") 
-    return message.channel.send(`Victoriâ`)
+    if(message.content.toLowerCase() == "+tag") 
+    return message.channel.send(`**⚚**`)
 });
 
 client.on("message", message => {
     if(message.content.toLowerCase() == "-tag") 
-    return message.channel.send(`Victoriâ`)
+    return message.channel.send(`**⚚**`)
 });
 
 client.on("message", message => {
-    if(message.content.toLowerCase() == "u!tag") 
-    return message.channel.send(`Victoriâ`)
+    if(message.content.toLowerCase() == "?tag") 
+    return message.channel.send(`**⚚**`)
 });
 
 client.on("message", message => {
-    if(message.content.toLowerCase() == "u.tag") 
-    return message.channel.send(`Victoriâ`)
+    if(message.content.toLowerCase() == "tag") 
+    return message.channel.send(`**⚚**`)
 });
 
 client.on("message", message => {
-    if(message.content.toLowerCase() == "u-tag") 
-    return message.channel.send(`Victoriâ`)
+    if(message.content.toLowerCase() == "!tag") 
+    return message.channel.send(`**⚚**`)
 });
 
 client.on("message", message => {
     if(message.content.toLowerCase() == ".tag") 
-    return message.channel.send(`Victoriâ`)
+    return message.channel.send(`**⚚**`)
 });
 
 //------------------------------------------------------------------------------------------------------------\\
@@ -169,8 +169,8 @@ client.on("message", message => {
 });
 
 client.on("message", message => {
-    if(message.content.toLowerCase() == "Scream4UrLife") 
-    return message.channel.send(`Scream4UrLife adamdır :heart: :heart:`)
+    if(message.content.toLowerCase() == "Alworth") 
+    return message.channel.send(`**⚚ Alworth :)** `)
 
 });
 
@@ -233,7 +233,7 @@ member.send("Cezalıyken Sunucudan Çıktığın için Yeniden Cezalı Rolü Ver
     // msg.channel.send(`<@${user.id}> Muten açıldı.`)
 db.delete(`cezali_${member.guild.id + member.id}`)
     member.send(`<@${member.id}> Cezan açıldı.`)
-    member.roles.remove('836555450405093406');
+    member.roles.remove(ayarlar.JailCezalıRol);
   }, ms(sürejail));
 }
 })
@@ -253,7 +253,7 @@ member.send("Muteliyken Sunucudan Çıktığın için Yeniden Mutelendin!")
     // msg.channel.send(`<@${user.id}> Muten açıldı.`)
 db.delete(`muteli_${member.guild.id + member.id}`)
     member.send(`<@${member.id}> Muten açıldı.`)
-    member.roles.remove('836555451046297601');
+    member.roles.remove(ayarlar.MuteliRol);
   }, ms(süre));
 }
 })
