@@ -241,7 +241,7 @@ db.delete(`cezali_${member.guild.id + member.id}`)
 //--------------------------------------------------------------------------------------\\
 
 client.on('guildMemberAdd', async(member) => {
-let mute = member.guild.roles.cache.find(r => r.name === "muted");
+let mute = member.guild.roles.cache.find(r => r.name === "Muted");
 let mutelimi = db.fetch(`muteli_${member.guild.id + member.id}`)
 let süre = db.fetch(`süre_${member.id + member.guild.id}`)
 if (!mutelimi) return;
