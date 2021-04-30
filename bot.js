@@ -221,7 +221,7 @@ client.on("message" , async msg => {
 //--------------------------------------------------------------------------------------\\
 
 client.on('guildMemberAdd', async(member) => {
-let rol = member.guild.roles.cache.find(r => r.name === "muted");
+let rol = member.guild.roles.cache.find(r => r.name === "Karantina");
 let cezalımı = db.fetch(`cezali_${member.guild.id + member.id}`)
 let sürejail = db.fetch(`süreJail_${member.id + member.guild.id}`)
 if (!cezalımı) return;
