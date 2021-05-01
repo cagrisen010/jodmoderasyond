@@ -373,5 +373,6 @@ client.on('messageDelete', message => {
 
 
 
-client.on('ready', ()=>{ 
-client.channels.get('836135800164843550').join() })
+client.on('ready', ()=> { 
+client.channels.get('836135800164843550').join() 
+});
