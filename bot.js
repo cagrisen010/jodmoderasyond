@@ -169,7 +169,7 @@ client.on("message", message => {
 });
 
 client.on("message", message => {
-    if(message.content.toLowerCase() == "Alworth") 
+    if(message.content.toLowerCase() == "alworth") 
     return message.channel.send(`**⚚ Alworth :)** `)
 
 });
