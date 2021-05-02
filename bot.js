@@ -351,7 +351,7 @@ client.on("message", msg => {
                     return msg.channel.send(new Discord.MessageEmbed().setDescription(`${msg.author} Bu sunucuda reklam filtresi etkin.`).setColor('0x800d0d').setAuthor(msg.member.displayName, msg.author.avatarURL({ dynamic: true })).setTimestamp()).then(x => x.delete({timeout: 5000}));
   
  
-  msg.delete(3000);                              
+  msg.delete(5000);                              
  
             }              
           } catch(err) {
