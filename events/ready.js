@@ -10,7 +10,7 @@ module.exports = client => {
   console.log(`[BOT] | (${client.user.username}) Alworth?!
   ‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒`);
   client.user.setStatus("online");
-  client.user.setActivity("discord.gg/alworth", { type: "WATCHING"}); //// TYPE - WATCHING , PLAYING , LISTENING gibi değiştirilebilir.
+  client.user.setActivity("ꑮ WENTRON - MODERASYON", { type: "WATCHING"}); //// TYPE - WATCHING , PLAYING , LISTENING gibi değiştirilebilir.
   console.log(`discord.gg/alworth`);
 
 };

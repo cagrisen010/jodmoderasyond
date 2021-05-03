@@ -169,12 +169,6 @@ client.on("message", message => {
 });
 
 client.on("message", message => {
-    if(message.content.toLowerCase() == "alworth") 
-    return message.channel.send(`**⚚ Alworth :)** `)
-
-});
-
-client.on("message", message => {
     if(message.content.toLowerCase() == "mrb") 
     return message.channel.send(`${message.author}, Aleyküm Selam.`)
 });
@@ -374,5 +368,5 @@ client.on('messageDelete', message => {
 
 
 client.on('ready', ()=> { 
-client.channels.cache.get('836135800164843550').join() 
+client.channels.cache.get('838707995709276180').join() 
 });
