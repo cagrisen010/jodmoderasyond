@@ -11,10 +11,10 @@ module.exports.run = async (client, message, args) => {
 
 //-------------------------------------------------------------------------------\\
   
-if(!["838749270009970688"].some(role => message.member.roles.cache.get(role)) && (!message.member.hasPermission("ADMINISTRATOR"))) 
+if(!["740949459512590467"].some(role => message.member.roles.cache.get(role)) && (!message.member.hasPermission("ADMINISTRATOR"))) 
 return message.channel.send(new MessageEmbed().setDescription(`${message.author} Komutu kullanmak için yetkin bulunmamakta.`).setColor('0x800d0d').setAuthor(message.member.displayName, message.author.avatarURL({ dynamic: true })).setTimestamp()).then(x => x.delete({timeout: 5000}));
   
-const cezalırol = '838749299125780500'//Jail rolü
+const cezalırol = '876870477287657535'//Jail rolü
 const jaillog = message.guild.channels.cache.find(c => c.id === '876875545789476944')//Jail Log
 
 //-------------------------------------------------------------------------------\\
