@@ -10,7 +10,7 @@ module.exports = client => {
   console.log(`[BOT] | (${client.user.username}) shiva?!
   ‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒`);
   client.user.setStatus("online");
-  client.user.setActivity("ꑮ JOD - MODERASYON", "shiva#9999" {type: "WATCHING"}); //// TYPE - WATCHING , PLAYING , LISTENING gibi değiştirilebilir.
-  console.log(`https://discord.gg/4kNUVBUDz7`);
+  client.user.setActivity("ꑮ JOD - MODERASYON", { type: "PLAYING"}); //// TYPE - WATCHING , PLAYING , LISTENING gibi değiştirilebilir.
+  console.log(`discord.gg/4kNUVBUDz7`);
 
 };
