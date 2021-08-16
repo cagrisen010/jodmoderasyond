@@ -332,6 +332,27 @@ client.setMaxListeners(30)
 
 //--------------------------------------------------------------------------------------\\
 
+client.on("message", msg => {
+const db = require("quick.db");
+  let enginar= db.fetch(`onaylıcanlıdestek_${msg.author.id}`)
+  if(!enginar) return;
+  let engin = db.fetch(`canlıdestekkanal_${msg.author.id}`)
+  var dm = client.channels.cache.get(engin)
+  if(msg.channel.type === "dm") {
+  if(msg.author.id === client.user.id) return;
+  const botdm = new Discord.MessageEmbed()
+  .setTitle(`CANLI DESTEK MESAJI`)
+  .setTimestamp()
+  .setColor("RED")
+  .setThumbnail(`${msg.author.avatarURL()}`)
+  .setDescription(`<@${msg.author.id}> adlı kişi ile başlattığınız destek talebinden yeni mesaj! \n \n  Mesaj: **${msg.content}** \n \n Sizde mejaj göndermek istiyorsanız !canlı-mesaj-yolla id mesaj \n\n Bitirmek için: !canlı-destek-bitir id`)
+.setFooter('shiva#9999')
+  
+  dm.send(botdm)
+  
+  }
+  if(msg.channel.bot) return;
+  });
 
 //--------------------------------------------------------------------------------------\\
 
