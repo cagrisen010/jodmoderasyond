@@ -7,10 +7,10 @@ var prefix = ayarlar.prefix;
 
 module.exports = client => {
   console.log(`[BOT] | Botun destekçileri ve komutları başarıyla yüklendi, işlemler tamamlandı !`);
-  console.log(`[BOT] | (${client.user.username}) Alworth?!
+  console.log(`[BOT] | (${client.user.username}) shiva?!
   ‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒`);
   client.user.setStatus("online");
-  client.user.setActivity("ꑮ WENTRON - MODERASYON", { type: "WATCHING"}); //// TYPE - WATCHING , PLAYING , LISTENING gibi değiştirilebilir.
-  console.log(`discord.gg/alworth`);
+  client.user.setActivity("ꑮ JOD - MODERASYON", { type: "WATCHING"}); //// TYPE - WATCHING , PLAYING , LISTENING gibi değiştirilebilir.
+  console.log(`https://discord.gg/4kNUVBUDz7`);
 
 };
