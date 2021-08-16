@@ -123,12 +123,12 @@ client.login(process.env.token).then(console.log(`Bot başarıyla giriş yaptı!
 
 client.on("message", message => {
     if(message.content.toLowerCase() == "+tag") 
-    return message.channel.send(`**JOD**`)
+    return message.channel.send(``)
 });
 
 client.on("message", message => {
     if(message.content.toLowerCase() == "-tag") 
-    return message.channel.send(`**JOD**`)
+    return message.channel.send(`JOD`)
 });
 
 client.on("message", message => {

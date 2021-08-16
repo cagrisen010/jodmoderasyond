@@ -8,10 +8,10 @@ exports.run = async (client, message, args) => {
   
 //-------------------------------------------------------------------------------\\  
 
-if(!["838704295649214494"].some(role => message.member.roles.cache.get(role)) && (!message.member.hasPermission("ADMINISTRATOR"))) 
+if(!["740949459512590467"].some(role => message.member.roles.cache.get(role)) && (!message.member.hasPermission("ADMINISTRATOR"))) 
 return message.channel.send(new MessageEmbed().setDescription(`${message.author} Komutu kullanmak için yetkin bulunmamakta.`).setColor('0x800d0d').setAuthor(message.member.displayName, message.author.avatarURL({ dynamic: true })).setTimestamp()).then(x => x.delete({timeout: 5000}));
   
-const banlog = message.guild.channels.cache.find(c => c.id === '838781432892751932')//Ban log kanalı  
+const banlog = message.guild.channels.cache.find(c => c.id === '876875545789476944')//Ban log kanalı  
   
 //-------------------------------------------------------------------------------\\
 

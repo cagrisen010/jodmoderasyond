@@ -13,7 +13,7 @@ exports.run = async (client, message, args) => {
 if(!["838704296002060298"].some(role => message.member.roles.cache.get(role)) && (!message.member.hasPermission("ADMINISTRATOR"))) 
 return message.channel.send(new MessageEmbed().setDescription(`${message.author} Komutu kullanmak için yetkin bulunmamakta.`).setColor('0x800d0d').setAuthor(message.member.displayName, message.author.avatarURL({ dynamic: true })).setTimestamp()).then(x => x.delete({timeout: 5000}));
   
-const mutelog = message.guild.channels.cache.find(c => c.id === '838781432892751932')//mute log
+const mutelog = message.guild.channels.cache.find(c => c.id === '876875545789476944')//mute log
 
 //-------------------------------------------------------------------------------\\
 
