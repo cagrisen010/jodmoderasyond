@@ -13,7 +13,7 @@ db.set(`canlıdestek_${id}`, message.author.id)
 const embedd = new discord.MessageEmbed()
 .setTitle('Canlı destek talebi geldi!')
 .setDescription(`**__Kişi Bilgileri__** \n \n Kişi: <@${message.author.id}> \n İdi: ${message.author.id} \n \n **__CANLI DESTEK__** \n \n Canlı destek idi: ${id} \n Kabul etmek için !canlı-destek-onayla ${id}`)
-client.channels.cache.get("kanalid").send(embedd)
+client.channels.cache.get("kanalid").send(embed)
 };
 exports.conf = {
     enabled: true,
